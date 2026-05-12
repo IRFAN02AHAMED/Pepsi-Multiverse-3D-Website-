@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .glass-rim {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2), 0 0 40px rgba(0, 217, 255, 0.1);
+        }
+        .liquid-gradient {
+            background: linear-gradient(135deg, #005cb4 0%, #00d9ff 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#b30002",
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "background": "#111319",
+                      "surface-dim": "#111319",
+                      "on-secondary-container": "#ffbeb3",
+                      "outline": "#8c919d",
+                      "secondary": "#ffb4a8",
+                      "on-tertiary-fixed-variant": "#004e5d",
+                      "surface-container-highest": "#32353b",
+                      "surface-container": "#1d2025",
+                      "tertiary": "#00d9ff",
+                      "on-primary-fixed": "#001b3d",
+                      "primary-fixed-dim": "#a9c7ff",
+                      "inverse-primary": "#045db5",
+                      "on-tertiary-container": "#81e4ff",
+                      "on-surface": "#e1e2ea",
+                      "secondary-fixed-dim": "#ffb4a8",
+                      "surface": "#111319",
+                      "on-primary-fixed-variant": "#00468b",
+                      "on-tertiary": "#003641",
+                      "on-surface-variant": "#c2c6d4",
+                      "surface-tint": "#a9c7ff",
+                      "on-primary": "#003063",
+                      "primary": "#a9c7ff",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed-dim": "#00d9ff",
+                      "tertiary-fixed": "#aeecff",
+                      "surface-container-high": "#272a30",
+                      "tertiary-container": "#006679",
+                      "inverse-on-surface": "#2e3036",
+                      "primary-fixed": "#d6e3ff",
+                      "on-secondary": "#690000",
+                      "on-primary-container": "#c3d7ff",
+                      "secondary-fixed": "#ffdad4",
+                      "inverse-surface": "#e1e2ea",
+                      "on-secondary-fixed": "#410000",
+                      "surface-container-low": "#191c21",
+                      "on-background": "#e1e2ea",
+                      "on-secondary-fixed-variant": "#930001",
+                      "surface-variant": "#32353b",
+                      "surface-bright": "#37393f",
+                      "on-tertiary-fixed": "#001f26",
+                      "surface-container-lowest": "#0b0e14",
+                      "primary-container": "#005cb4",
+                      "outline-variant": "#424752",
+                      "on-error": "#690005"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "80px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "margin-mobile": "24px",
+                      "max-width": "1440px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "nav-item": ["Space Grotesk"],
+                      "technical-label": ["Space Grotesk"],
+                      "headline-lg": ["Bebas Neue"],
+                      "display-hero": ["Bebas Neue"],
+                      "headline-lg-mobile": ["Bebas Neue"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                      "nav-item": ["14px", {"lineHeight": "100%", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "technical-label": ["12px", {"lineHeight": "120%", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                      "headline-lg": ["64px", {"lineHeight": "100%", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "display-hero": ["120px", {"lineHeight": "110%", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["48px", {"lineHeight": "100%", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-tertiary selection:text-on-tertiary min-h-screen overflow-x-hidden">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0px_0px_20px_rgba(0,217,255,0.2)]">
+<div class="flex items-center gap-2">
+<span class="font-display-hero text-primary tracking-widest text-[32px]">Pepsi Multiverse</span>
+</div>
+<div class="hidden md:flex items-center gap-12">
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Multiverse</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Flavors</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Collections</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Experience</a>
+</div>
+<button class="liquid-gradient px-8 py-3 rounded-full font-nav-item text-nav-item text-on-primary font-bold hover:scale-105 transition-all duration-300 neon-glow-primary uppercase tracking-widest">
+            Explore
+        </button>
+</nav>
+<main class="relative pt-24">
+<!-- Cinematic Finale Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-margin-mobile md:px-margin-desktop">
+<!-- Volumetric Background Effects -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary-container/10 rounded-full blur-[120px]"></div>
+</div>
+<!-- Central Content Container -->
+<div class="relative z-10 flex flex-col items-center text-center max-w-4xl">
+<!-- Technical HUD Detail -->
+<div class="mb-8 flex items-center gap-4 py-2 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md glass-rim">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-technical-label text-technical-label text-tertiary uppercase tracking-[0.2em]">Dimension Locked: Prime Earth</span>
+</div>
+<!-- Headline -->
+<h1 class="font-display-hero text-on-surface leading-none mb-4 md:mb-8 text-[80px] md:text-[140px] drop-shadow-[0_0_30px_rgba(169,199,255,0.3)]">
+                    Taste The Future
+                </h1>
+<!-- Subheadline HUD -->
+<div class="mb-12 max-w-2xl">
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 leading-relaxed">
+                        Step through the portal into a multi-dimensional sensory experience. The original crisp refresh, evolved for the next era of digital existence.
+                    </p>
+</div>
+<!-- MASSIVE FLOATING CAN ASSET -->
+<div class="relative w-full aspect-video md:aspect-[21/9] flex items-center justify-center my-12">
+<!-- Particle Orbit Layer 1 -->
+<div class="absolute inset-0 flex items-center justify-center opacity-40">
+<div class="w-[300px] h-[600px] border border-tertiary/20 rounded-full rotate-45 scale-150"></div>
+<div class="w-[300px] h-[600px] border border-primary/20 rounded-full -rotate-45 scale-150"></div>
+</div>
+<!-- The Hero Asset -->
+<div class="relative z-20 group">
+<div class="absolute -inset-10 bg-tertiary/20 blur-[60px] rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-1000"></div>
+<img alt="Pepsi Can in Multiverse" class="w-[280px] md:w-[320px] drop-shadow-[0_0_50px_rgba(0,217,255,0.4)] relative z-10 transition-transform duration-700 group-hover:scale-110" data-alt="A hyper-realistic cinematic render of a glossy Pepsi can floating in a dark futuristic void, surrounded by orbiting glowing neon cyan particles and liquid chrome droplets. Volumetric blue and red lighting pulses from behind the can, creating a dramatic rim light effect against a backdrop of soft digital nebula clouds. The aesthetic is high-end, luxury tech, with metallic reflections and sharp glass-like textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZJ7BQD-z6Om6q8LoYWyU253jq_16wjEkdyeuE95t7UFUQ-szodxjXr7D9_eoKF2QyvOtggzFNZL2KTu2_AI0-M9TkMo88KloHeOUoAk-fHJoAK2PTgVdGbAApjztTgQb3OdOtASLOvCeFSVELULtuGH93EbPkVbi1p_Gj_2Rfoj_K8V4pXKteV-ulsshKGMbsbH1Adt4Ti03plCFstZCM95_QljhNeEWcDN6CbT8YtUmn6HLG22m65cNpLVxYylI9QmgmdM4xeuGz"/>
+<!-- HUD Scanning Lines -->
+<div class="absolute -left-12 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-tertiary to-transparent opacity-50"></div>
+<div class="absolute -right-12 top-0 h-full w-[1px] bg-gradient-to-b from-transparent via-tertiary to-transparent opacity-50"></div>
+</div>
+</div>
+<!-- FINAL CTA BUTTON -->
+<div class="flex flex-col items-center gap-6 mt-8">
+<button class="relative group">
+<div class="absolute -inset-1 liquid-gradient rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
+<div class="relative px-12 py-6 liquid-gradient rounded-full flex items-center gap-4 transition-transform duration-300 group-hover:scale-105">
+<span class="font-nav-item text-nav-item text-on-primary text-xl font-bold uppercase tracking-widest">Enter The Pepsi Universe</span>
+<span class="material-symbols-outlined text-on-primary">arrow_forward</span>
+</div>
+</button>
+<!-- Trust Signals HUD -->
+<div class="flex gap-12 items-center opacity-60">
+<div class="flex flex-col items-start">
+<span class="font-technical-label text-[10px] text-tertiary uppercase">Latency</span>
+<span class="font-nav-item text-on-surface">0.02 MS</span>
+</div>
+<div class="w-[1px] h-8 bg-white/10"></div>
+<div class="flex flex-col items-start">
+<span class="font-technical-label text-[10px] text-tertiary uppercase">Stability</span>
+<span class="font-nav-item text-on-surface">99.9% SYNC</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Side HUD Elements -->
+<div class="hidden lg:block absolute left-margin-desktop bottom-24 w-64 border-l border-tertiary/30 pl-4 py-4 space-y-4">
+<div class="space-y-1">
+<div class="w-full h-1 bg-white/5 overflow-hidden">
+<div class="w-2/3 h-full bg-tertiary"></div>
+</div>
+<span class="font-technical-label text-[10px] text-on-surface-variant block uppercase tracking-wider">Flavor Calibration</span>
+</div>
+<div class="space-y-1">
+<div class="w-full h-1 bg-white/5 overflow-hidden">
+<div class="w-1/2 h-full bg-primary"></div>
+</div>
+<span class="font-technical-label text-[10px] text-on-surface-variant block uppercase tracking-wider">Carbonation Matrix</span>
+</div>
+</div>
+<div class="hidden lg:block absolute right-margin-desktop bottom-24 text-right">
+<div class="font-display-hero text-tertiary text-4xl leading-none">GRID-07</div>
+<div class="font-technical-label text-on-surface-variant tracking-widest uppercase">Final Convergence Point</div>
+</div>
+</section>
+<!-- Final Bento Grid Summary Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-max-width mx-auto">
+<div class="md:col-span-2 bg-surface-container-high/40 backdrop-blur-xl p-8 rounded-2xl glass-rim flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4">rocket_launch</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface text-4xl mb-2 uppercase">Instant Transmission</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Zero-latency flavor delivery through our proprietary quantum logistics network.</p>
+</div>
+</div>
+<div class="bg-surface-container-high/40 backdrop-blur-xl p-8 rounded-2xl glass-rim border-l-2 border-l-tertiary">
+<h4 class="font-technical-label text-tertiary mb-2 uppercase">Current Users</h4>
+<div class="font-display-hero text-5xl text-on-surface">12.8M</div>
+<p class="font-technical-label text-[10px] text-outline mt-2 uppercase tracking-tighter">Active Connections</p>
+</div>
+<div class="bg-surface-container-high/40 backdrop-blur-xl p-8 rounded-2xl glass-rim">
+<h4 class="font-technical-label text-tertiary mb-2 uppercase">System Status</h4>
+<div class="font-display-hero text-5xl text-on-surface">OPTIMAL</div>
+<div class="mt-4 flex gap-1">
+<div class="h-1 flex-1 bg-tertiary"></div>
+<div class="h-1 flex-1 bg-tertiary"></div>
+<div class="h-1 flex-1 bg-tertiary"></div>
+<div class="h-1 flex-1 bg-tertiary/20"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full px-margin-desktop py-12 flex flex-col items-center gap-8 bg-surface-container-lowest bg-gradient-to-t from-surface-container-lowest to-transparent border-t border-white/5">
+<div class="flex flex-col items-center gap-4">
+<span class="font-headline-lg text-on-surface text-4xl">Pepsi Multiverse</span>
+<div class="flex gap-8">
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Privacy Protocol</a>
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Terms of Service</a>
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Contact HQ</a>
+</div>
+</div>
+<p class="font-body-md text-technical-label text-outline/50 uppercase tracking-widest text-[10px]">
+            © 2024 Pepsi Multiverse. All Dimensions Reserved.
+        </p>
+</footer>
+</body></html>

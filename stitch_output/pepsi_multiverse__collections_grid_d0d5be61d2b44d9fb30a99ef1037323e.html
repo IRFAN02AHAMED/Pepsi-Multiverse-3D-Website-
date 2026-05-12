@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pepsi Multiverse | Dimension Collections</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-slab {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(32px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+        }
+        .liquid-metallic-blue {
+            background: linear-gradient(135deg, #005cb4 0%, #00d9ff 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ffb4a8",
+                      "background": "#111319",
+                      "tertiary-fixed-dim": "#00d9ff",
+                      "secondary-fixed": "#ffdad4",
+                      "on-secondary-container": "#ffbeb3",
+                      "error": "#ffb4ab",
+                      "primary-container": "#005cb4",
+                      "inverse-surface": "#e1e2ea",
+                      "on-primary": "#003063",
+                      "on-secondary-fixed-variant": "#930001",
+                      "surface": "#111319",
+                      "primary-fixed": "#d6e3ff",
+                      "on-surface-variant": "#c2c6d4",
+                      "on-primary-fixed": "#001b3d",
+                      "inverse-on-surface": "#2e3036",
+                      "tertiary-container": "#006679",
+                      "on-surface": "#e1e2ea",
+                      "secondary-container": "#b30002",
+                      "on-primary-fixed-variant": "#00468b",
+                      "surface-bright": "#37393f",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0b0e14",
+                      "surface-container-high": "#272a30",
+                      "on-tertiary-fixed": "#001f26",
+                      "inverse-primary": "#045db5",
+                      "surface-tint": "#a9c7ff",
+                      "primary-fixed-dim": "#a9c7ff",
+                      "on-secondary": "#690000",
+                      "on-error-container": "#ffdad6",
+                      "primary": "#a9c7ff",
+                      "outline": "#8c919d",
+                      "on-primary-container": "#c3d7ff",
+                      "surface-variant": "#32353b",
+                      "tertiary-fixed": "#aeecff",
+                      "on-error": "#690005",
+                      "on-background": "#e1e2ea",
+                      "surface-container-low": "#191c21",
+                      "on-tertiary": "#003641",
+                      "on-secondary-fixed": "#410000",
+                      "tertiary": "#00d9ff",
+                      "on-tertiary-container": "#81e4ff",
+                      "surface-container": "#1d2025",
+                      "secondary": "#ffb4a8",
+                      "outline-variant": "#424752",
+                      "on-tertiary-fixed-variant": "#004e5d",
+                      "surface-container-highest": "#32353b",
+                      "surface-dim": "#111319"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "80px",
+                      "unit": "8px",
+                      "margin-mobile": "24px",
+                      "max-width": "1440px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "technical-label": ["Space Grotesk"],
+                      "headline-lg": ["Bebas Neue"],
+                      "display-hero": ["Bebas Neue"],
+                      "headline-lg-mobile": ["Bebas Neue"],
+                      "nav-item": ["Space Grotesk"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "technical-label": ["12px", {"lineHeight": "120%", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                      "headline-lg": ["64px", {"lineHeight": "100%", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "display-hero": ["120px", {"lineHeight": "110%", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["48px", {"lineHeight": "100%", "fontWeight": "400"}],
+                      "nav-item": ["14px", {"lineHeight": "100%", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-tertiary/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0px_0px_20px_rgba(0,217,255,0.2)]">
+<div class="font-display-hero text-primary tracking-widest text-[32px]">Pepsi Multiverse</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Multiverse</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Flavors</a>
+<a class="font-nav-item text-nav-item text-tertiary border-b-2 border-tertiary pb-1" href="#">Collections</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Experience</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-nav-item text-nav-item hover:scale-105 active:scale-95 transition-all">Explore</button>
+</header>
+<main class="pt-32 pb-24 px-margin-desktop max-w-max-width mx-auto">
+<!-- Hero Section -->
+<section class="mb-20 text-center relative">
+<div class="absolute -top-20 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-radial from-tertiary/10 to-transparent blur-[100px] -z-10"></div>
+<h1 class="font-display-hero text-display-hero uppercase mb-4 tracking-tighter">Liquid Dimensions</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Navigate through the flavor spectrum of the Pepsi Multiverse. Each dimension offers a unique sensory profile calibrated for maximum refreshment.</p>
+</section>
+<!-- Collections Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Original Card (Large/Featured) -->
+<div class="lg:col-span-2 lg:row-span-2 glass-slab rounded-xl overflow-hidden group flex flex-col p-8 neon-glow-cyan">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="font-technical-label text-technical-label text-tertiary uppercase tracking-widest px-2 py-1 border border-tertiary/30 rounded">Dimension 001</span>
+<h2 class="font-headline-lg text-headline-lg mt-4">Original</h2>
+</div>
+<div class="text-right">
+<div class="font-technical-label text-technical-label text-outline uppercase">Viscosity Status</div>
+<div class="font-technical-label text-technical-label text-on-surface font-bold">OPTIMAL_REACHED</div>
+</div>
+</div>
+<div class="flex-grow flex items-center justify-center relative py-12">
+<img class="h-64 object-contain group-hover:scale-110 transition-transform duration-700" data-alt="A highly detailed 3D render of a Pepsi can suspended in a digital void. The background is a deep space blue with ethereal cyan neon light trails swirling around the metallic surface of the can. Water droplets with realistic reflections cling to the cold blue aluminum, catching the high-key top-down studio lighting. The aesthetic is futuristic luxury with a crisp, sharp focus and a cinematic, high-energy mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvamz97nGHcwRpsIBtNtV1aIQtRKhMHyJhpMO3gdSrulf2bB1btlmaNiVdYjBN9Rm3p1CMlPi1h3_PWuu38T7Qyxm3dB4eHNkGVJrzEuIPt-oU44K8NGw5dj8rTCpL08EYtCoDQzsx2fIHsDzI2h0trJYn4KFDlrOe1fOnGh09K-uEbkUmp0_pAChqCQ0TKoKSfvodWOPDWzRmVnvpI1Mwpc1xkPtmmVasTYRJX8h8EelYc5APxK9sVUliOfKZjz45y6un5fLCnjUH"/>
+<div class="absolute inset-0 bg-gradient-radial from-tertiary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
+<div class="flex flex-col gap-1">
+<span class="font-technical-label text-technical-label text-outline uppercase">Origin Protocol</span>
+<span class="font-technical-label text-technical-label text-on-surface">Earth_Primary_01</span>
+</div>
+<button class="liquid-metallic-blue text-on-primary font-technical-label text-technical-label uppercase py-3 rounded-lg hover:scale-105 transition-all">Interface Dimension</button>
+</div>
+</div>
+<!-- Zero Sugar -->
+<div class="glass-slab rounded-xl p-6 group flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg text-[32px]">Zero Sugar</h3>
+<span class="font-technical-label text-technical-label text-on-surface-variant">V.00</span>
+</div>
+<div class="relative py-4 flex justify-center">
+<img class="h-40 object-contain group-hover:rotate-12 transition-transform duration-500" data-alt="A sleek black Pepsi Zero Sugar can rendered in a futuristic lab setting. The lighting is dominated by a vertical pulse of neon cyan light hitting the matte black texture of the can. Cold condensation mist surrounds the base, creating a sense of extreme chill. The background features blurred HUD data points and scanning lines in a dark luxury, technological aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqFyB5UgNu7Gs3_Pa92ABC1-TmoyhR5jJpBQK30v0JJtgpr_J8ThTdgfa9sFI6XKCuYBH6jZ_CA_gU9BFwDcKC4rKnhIivmF4vIiFZdEb-Zwz-ClTmRpDSXnKHxQOb-6qbcz7jtvUj2wUV_vTpe30zYCHPbSmHrbn8hRjgcCarFzn53pLRSiXvTFe4GmpMEIkhWPtvY8PS6VxpzuyD67XvSq1fzegDEW9LUDcRFtA47HRCdsI-hVgcXQ4LiU3oPUrxI2RUC-w6lnj4"/>
+</div>
+<div class="mt-auto pt-4 border-t border-white/5 space-y-2">
+<div class="flex justify-between font-technical-label text-technical-label">
+<span class="text-outline">DENSITY</span>
+<span class="text-on-surface">NULL_VAL</span>
+</div>
+<div class="flex justify-between font-technical-label text-technical-label">
+<span class="text-outline">CHILL_FACTOR</span>
+<span class="text-on-surface">100%</span>
+</div>
+</div>
+</div>
+<!-- Wild Cherry -->
+<div class="glass-slab rounded-xl p-6 group flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-lg text-headline-lg text-[32px] text-secondary">Wild Cherry</h3>
+<span class="font-technical-label text-technical-label text-secondary">A.07</span>
+</div>
+<div class="relative py-4 flex justify-center">
+<img class="h-40 object-contain group-hover:scale-105 transition-transform" data-alt="A macro perspective of a dark crimson metallic can with deep red neon accents. Swirls of vibrant red liquid energy surround the can as if it is merging with another dimension. The lighting is dramatic and moody, highlighting the metallic reflections on the curved surface. The scene is set in a high-end digital environment with glassmorphic depth effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGvnjcap5__J6TwQRHCZkN4emv78iDhlKgCNUYRDEKCjx_GB7cz3KiXNs0kRU-J2z51DVbheESieQYUXqFtS3ASqU-SVOAYfEIRU84M2_URmoudRQw20spzoygAfXgV3TA8qxeZBzFwfEIQhQnGO1VjpFWJh5yKw59uFNWYVy-hNE-OwymnqqmeSlGbiwArmYFvir6ABY5GKkxzjZeJZiqgRogW6U7-OdAmCDPE6peK0kQ9xhZum9r0MIYV7EeKCSH7yKvfdWF-u-K"/>
+</div>
+<div class="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
+<span class="font-technical-label text-technical-label text-outline uppercase">Active Pulse</span>
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+</div>
+</div>
+<!-- Lime -->
+<div class="glass-slab rounded-xl p-6 group flex flex-col border-l-2 border-l-tertiary/40">
+<h3 class="font-headline-lg text-headline-lg text-[32px] mb-4">Lime</h3>
+<div class="py-4 flex justify-center">
+<img class="h-40 object-contain group-hover:translate-y-[-10px] transition-transform" data-alt="A vivid, electric green themed render of a cold soda can. The background features geometric neon green fractals and glass panels reflecting a sharp, bright light. The overall color palette is a mix of deep blacks and intense neon lime, creating a high-energy, refreshing futuristic aesthetic typical of a luxury tech interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMgUdQ-AAnlSeU48FMhJXZIEwL8idYSNA4R5S4b2QODjYxJkEyUHRfheks4X4U5iZFrsA-1aXU0fKQENOAjwOVYRrr61uDR-6bBbO9Dy0uSsHOTlxMAZna3RoOR9wqjV9uyMl3fI1zxMe6dpTUoZI3e__dwznlBP7-3c_KHcR1CtjjiilI_H6jvxH9-2yyyYzbHqytl1g8Aeal0zEMmdqHu20TPQSSyCTeDlhp54A03ZWDSHLwc2buGqL02fOXWJ-p3jC00WmGKXux"/>
+</div>
+<div class="mt-auto text-center font-technical-label text-technical-label text-outline py-2 bg-surface-container rounded-lg">
+                    ACIDITY_STABLE
+                </div>
+</div>
+<!-- Mango -->
+<div class="glass-slab rounded-xl p-6 group flex flex-col">
+<h3 class="font-headline-lg text-headline-lg text-[32px] mb-4">Mango</h3>
+<div class="py-4 flex justify-center">
+<img class="h-40 object-contain" data-alt="A warm, solar-themed render of a metallic can with golden-orange reflections. The environment is a minimalist luxury gallery with warm amber lighting. Ethereal golden dust particles float in the air around the can, which features high-end automotive-style paint finish. The mood is sophisticated and tropical in a futuristic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy4v8mm63jHvixfJfeNWtFXivJh-5a50HUcImec3HgyH_rDlJpGFidHam5FiuB17bVDlNXPB9gkhBBdA-6j7QDna2M9F7H2JqLIa0wYXSaORnR7VkJV57CIikKAYjr4tMwHq3BGFV8dMuScN16nAOYO-0xDzk6QAhbIkPVLeuj0ygDlY1wmC0jdTVz6WYR92JNFRYWrlbtRoiA0j_hEfxMLShQoMRrZNI7uSpLDstAe0acPUfaxO8CobyxcczApfblX3VMadDtEmBl"/>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-2">
+<div class="h-1 bg-tertiary"></div>
+<div class="h-1 bg-tertiary/20"></div>
+</div>
+</div>
+<!-- Electric Limited (Featured Small) -->
+<div class="lg:col-span-2 glass-slab rounded-xl p-6 flex flex-col md:flex-row gap-8 items-center border border-tertiary/50 relative overflow-hidden">
+<div class="absolute inset-0 bg-tertiary/5 pointer-events-none"></div>
+<div class="relative z-10 w-full md:w-1/2">
+<span class="font-technical-label text-technical-label bg-tertiary text-on-tertiary px-3 py-1 rounded-full">TEMPORARY ANOMALY</span>
+<h3 class="font-headline-lg text-headline-lg mt-4">Electric Limited</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">A high-voltage dimension containing unprecedented levels of carbonated energy.</p>
+</div>
+<div class="w-full md:w-1/2 flex justify-center relative">
+<div class="absolute w-40 h-40 bg-tertiary/20 blur-[60px]"></div>
+<img class="h-48 object-contain z-10 hover:scale-125 transition-transform duration-1000" data-alt="A glowing, light-emitting soda can that illuminates the surrounding glass slabs with a vibrant cyan pulse. Lightning-like electrical arcs jump between the can and nearby technical HUD elements. The design is heavily inspired by futuristic luxury and high-energy physics, featuring intense light-based depth layering and neon glows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8TSlL2vajLLW8dl0INXreI4Llg3Ni70rFC6mwlaxvShenRRFQZt8Sfj7Zbu4ov92EUdznOGpteYTdrVp1P5-Pav629C8b7lSks7JfxAgvSHQDpbgtRu2Ng3657w1TOoZsrr2hoghSfssJoMiqGdpXHj61v7RoQjC56sCFc3t0ofrdhef34KRazOUKyTKIv2ji9tSbFerNI4pzsNk4qNHGaybhBcrhaWKNgQi221NQKs38qQ_hDryGxa9JEKeDtFNazQ3VoWdqAMh1"/>
+</div>
+</div>
+<!-- Nitro -->
+<div class="glass-slab rounded-xl p-6 group flex flex-col">
+<h3 class="font-headline-lg text-headline-lg text-[32px] mb-4">Nitro</h3>
+<div class="py-4 flex justify-center">
+<img class="h-40 object-contain group-hover:scale-110 transition-transform" data-alt="A matte blue Pepsi Nitro can with a velvety texture. The lighting is soft and diffused, creating a creamy, high-end look. The background features 3D interactive nodes that pulse in a breathing rhythm. The aesthetic is calm but technologically advanced, emphasizing the smooth viscosity of the beverage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFV_g3duxssAhGmmjP5KIZi1c6DEDC9lr_sv0jn-rHtLoEsJZM10nLGs05mc2p-VrarqDmHgfz6OLg3W2o57r8ITf0RL4pV4jKoHfzHyxFdVA0cosQS628RU_euzH1F1zvBL-kEz11yeIQCLlXabK-2pGzLn8gVnfliFoYGlA-dcy2ab_yMZg62RixlvkikPSb7dKOWcVK0SwdyRTKlcMHet1erY_h5NGjwFcLwXvpug4UoIV5jDWixQ7WawFWirqqcPmm5RqD2DLk"/>
+</div>
+<p class="font-technical-label text-technical-label text-on-surface-variant mt-auto uppercase tracking-tighter">Velocity: Sub-Atomic</p>
+</div>
+<!-- Blue -->
+<div class="glass-slab rounded-xl p-6 group flex flex-col">
+<h3 class="font-headline-lg text-headline-lg text-[32px] mb-4">Blue</h3>
+<div class="py-4 flex justify-center">
+<img class="h-40 object-contain group-hover:brightness-125 transition-all" data-alt="An electric blue themed digital installation featuring a cold metallic can. The lighting uses a multi-layered outer glow of cyan to suggest the can is a light-emitting object. The environment is minimalist and dark, with a fixed grid layout of data points visible in the periphery. High-fidelity glassmorphic cards float in the space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDijQCV7si4nMNm1DnVwo_n3KxTxEvqqUgEX0VgfgHyh9ublBXZvg2M8B7EdVq1xX8kJA7FUL5eU5SLK2vMoysQgDJ40Tn0-PXbwidMIjMijwe4j81vcM16ESeY4P1UUW2Kuc8oYs8ZSgwQw7rpEKZnPwPsAd7Bc6VOsAi7EHyx5EGAnCLWBr8VzmhjZ1gTqabBsTx5K9vMG2tOfzKyWK_N_8VoLmPJu3btUe3g3-1ISZJU8zlLOLyr_ER8ydlaZ1u8bnsRZr_gdUH7"/>
+</div>
+<div class="mt-auto flex gap-1">
+<span class="w-full h-1 bg-primary"></span>
+<span class="w-full h-1 bg-primary"></span>
+<span class="w-full h-1 bg-primary"></span>
+</div>
+</div>
+<!-- Vanilla -->
+<div class="glass-slab rounded-xl p-6 group flex flex-col">
+<h3 class="font-headline-lg text-headline-lg text-[32px] mb-4">Vanilla</h3>
+<div class="py-4 flex justify-center">
+<img class="h-40 object-contain" data-alt="A premium white and gold metallic can render. The lighting is soft, high-key, and elegant, creating a sense of luxury and creaminess. The background is a minimalist, abstract 3D space with subtle metallic reflections. The focus is on the intricate condensation details and the premium automotive finish of the can's surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDriPVBqdAAQAlTwTcW9oOlWdDbXG15hkqjwpr-ocbfD2okLAZdEsprLD48Wwj8g3Z0BTno3-V5SQuUZXuc5ElafO7Kx2Yt_Rmd19MTwu8bq8gw7kz1w7Ui00L7ihtpPiFFZ3ojFMTLrExt7sORpWAibEaZ_aq-Qpn3eBdVV0Xaik-D_C-jkWWxaUyGJZedSdNgqyz-0iWD4TDIEYT2PnkfohWdZGQhJcjepXKrNwFaDWxyO5VrmOEleuD8-n8b_SHV9TXYHRF7gHv-"/>
+</div>
+<div class="mt-auto font-technical-label text-technical-label text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">tune</span> CALIBRATED
+                </div>
+</div>
+<!-- Max -->
+<div class="glass-slab rounded-xl p-6 group flex flex-col bg-gradient-to-br from-black to-transparent">
+<h3 class="font-headline-lg text-headline-lg text-[32px] mb-4">Max</h3>
+<div class="py-4 flex justify-center">
+<img class="h-40 object-contain group-hover:scale-105 transition-transform" data-alt="A bold, heavy black metallic can with intense red lighting accents. The scene is high-energy and aggressive, with scanning-line animations in the background and a vertical pulse of red light on the left border of the screen. The aesthetic is industrial luxury, focusing on power and maximum intensity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb6W_5oi5rY8M78F4ypbm1YpOalzXvYXjjbfrAKafQMeSdxYN5YHwosAvCnawjqzGPpYA7qfI4PUbofxuCnYaMB4bI2z2qAaGXnpbKgrL5TNbRFvz7cM68ZTsEzkgAHiRwYEquwuVpvDLR6OoTn4p8xSnY2aax9W2-aT8myWcsiF0i8wpddQ5LHl9A-NU1jyxNdwwoIA_Dh5BaziHbExLWiLyx1Hngg_AmvoJE_8WrtA1H6H3XwC5zxkwoY-TBb4HZvY9vw8REGQcn"/>
+</div>
+<div class="mt-auto h-8 bg-on-surface-variant/10 rounded overflow-hidden flex items-center px-4">
+<div class="w-[90%] h-1 bg-secondary shadow-[0_0_10px_#ffb4a8]"></div>
+</div>
+</div>
+</div>
+<!-- Technical HUD Overlay -->
+<section class="mt-32 glass-slab p-12 rounded-3xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-tertiary to-transparent animate-pulse"></div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+<div class="space-y-6">
+<h2 class="font-headline-lg text-headline-lg leading-none">Multiverse Statistics</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time telemetry from across the 10 core dimensions. Refreshment levels are maintaining at peak synchronization.</p>
+</div>
+<div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="space-y-2">
+<span class="font-technical-label text-technical-label text-outline uppercase block">Active Users</span>
+<span class="font-technical-label text-[24px] text-tertiary font-bold tracking-tight">2.4M</span>
+</div>
+<div class="space-y-2">
+<span class="font-technical-label text-technical-label text-outline uppercase block">Sync Rate</span>
+<span class="font-technical-label text-[24px] text-tertiary font-bold tracking-tight">99.98%</span>
+</div>
+<div class="space-y-2">
+<span class="font-technical-label text-technical-label text-outline uppercase block">Dimension Load</span>
+<span class="font-technical-label text-[24px] text-tertiary font-bold tracking-tight">OPTIMAL</span>
+</div>
+<div class="space-y-2">
+<span class="font-technical-label text-technical-label text-outline uppercase block">Last Ping</span>
+<span class="font-technical-label text-[24px] text-tertiary font-bold tracking-tight">0.02ms</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-12 flex flex-col items-center gap-8 bg-surface-container-lowest bg-gradient-to-t from-surface-container-lowest to-transparent">
+<div class="font-headline-lg text-on-surface text-[32px]">Pepsi Multiverse</div>
+<div class="flex gap-12">
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Privacy Protocol</a>
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Terms of Service</a>
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Contact HQ</a>
+</div>
+<p class="font-technical-label text-technical-label text-outline text-center mt-4">© 2024 Pepsi Multiverse. All Dimensions Reserved.</p>
+</footer>
+</body></html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pepsi Multiverse | Refresh Reality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#b30002",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "background": "#111319",
+                    "surface-dim": "#111319",
+                    "on-secondary-container": "#ffbeb3",
+                    "outline": "#8c919d",
+                    "secondary": "#ffb4a8",
+                    "on-tertiary-fixed-variant": "#004e5d",
+                    "surface-container-highest": "#32353b",
+                    "surface-container": "#1d2025",
+                    "tertiary": "#00d9ff",
+                    "on-primary-fixed": "#001b3d",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "inverse-primary": "#045db5",
+                    "on-tertiary-container": "#81e4ff",
+                    "on-surface": "#e1e2ea",
+                    "secondary-fixed-dim": "#ffb4a8",
+                    "surface": "#111319",
+                    "on-primary-fixed-variant": "#00468b",
+                    "on-tertiary": "#003641",
+                    "on-surface-variant": "#c2c6d4",
+                    "surface-tint": "#a9c7ff",
+                    "on-primary": "#003063",
+                    "primary": "#a9c7ff",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#00d9ff",
+                    "tertiary-fixed": "#aeecff",
+                    "surface-container-high": "#272a30",
+                    "tertiary-container": "#006679",
+                    "inverse-on-surface": "#2e3036",
+                    "primary-fixed": "#d6e3ff",
+                    "on-secondary": "#690000",
+                    "on-primary-container": "#c3d7ff",
+                    "secondary-fixed": "#ffdad4",
+                    "inverse-surface": "#e1e2ea",
+                    "on-secondary-fixed": "#410000",
+                    "surface-container-low": "#191c21",
+                    "on-background": "#e1e2ea",
+                    "on-secondary-fixed-variant": "#930001",
+                    "surface-variant": "#32353b",
+                    "surface-bright": "#37393f",
+                    "on-tertiary-fixed": "#001f26",
+                    "surface-container-lowest": "#0b0e14",
+                    "primary-container": "#005cb4",
+                    "outline-variant": "#424752",
+                    "on-error": "#690005"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "80px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "margin-mobile": "24px",
+                    "max-width": "1440px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "nav-item": ["Space Grotesk"],
+                    "technical-label": ["Space Grotesk"],
+                    "headline-lg": ["Bebas Neue"],
+                    "display-hero": ["Bebas Neue"],
+                    "headline-lg-mobile": ["Bebas Neue"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                    "nav-item": ["14px", {"lineHeight": "100%", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "technical-label": ["12px", {"lineHeight": "120%", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "headline-lg": ["64px", {"lineHeight": "100%", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "display-hero": ["120px", {"lineHeight": "110%", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["48px", {"lineHeight": "100%", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .rim-light {
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+        .liquid-metallic-gradient {
+            background: linear-gradient(135deg, #005cb4 0%, #00d9ff 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-tertiary selection:text-on-tertiary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0px_0px_20px_rgba(0,217,255,0.2)]">
+<div class="font-display-hero text-primary tracking-widest text-[32px]">Pepsi Multiverse</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-nav-item text-nav-item text-tertiary border-b-2 border-tertiary pb-1 hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Multiverse</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Flavors</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Collections</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Experience</a>
+</div>
+<button class="liquid-metallic-gradient text-on-primary font-nav-item text-nav-item px-8 py-3 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 neon-glow">
+            Explore
+        </button>
+</nav>
+<!-- Main Hero Experience -->
+<main class="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20">
+<!-- Cinematic Background Environment -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-40 mix-blend-screen" data-alt="A vast, cinematic futuristic space environment with deep blue nebulae and swirling cosmic energy particles. The scene is illuminated by intense neon cyan light rays piercing through the darkness, creating high-contrast depth. Floating digital artifacts and atmospheric dust particles caught in the light suggest a multidimensional portal atmosphere, following a premium tech aesthetic with deep primary blue and electric cyan accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSkVYgZMcBxypCTE0fuRpO-5_wd30E8jOIA96VKpvu0T3q5uWkrUJfkU0m4m-v4EMGrwA4VASvfcLFA5ngL500YmIeRAlt1gYrPD5w-bgLcOZZXmSA5I9ZZCut4F5LXIV474EoW1oVz7RQciuv_QR7_Hx2aO3bwgV9GsPgXnw9H-vQNNmrx0SzyQJm0YMw2r1J9qws5BJY77FAmI3jIUKdledBFUfJks_Q_WYjbTM-6JUllHoaCBu_EXp_yUrXAmYEusWWcd2Keajo"/>
+<div class="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-90"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-tertiary/10 via-transparent to-transparent"></div>
+</div>
+<!-- 3D Asset Placeholder (Central Hero) -->
+<div class="relative z-10 flex flex-col items-center justify-center w-full max-w-[1440px] px-margin-desktop text-center">
+<!-- Headline Section -->
+<div class="relative mb-12">
+<h1 class="font-display-hero text-display-hero leading-[0.9] text-white mix-blend-plus-lighter drop-shadow-[0_0_30px_rgba(0,217,255,0.4)] md:text-[160px]">
+                    REFRESH <span class="text-tertiary">REALITY</span>
+</h1>
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
+<div class="h-[1px] w-12 bg-tertiary/50"></div>
+<span class="font-technical-label text-technical-label text-tertiary uppercase tracking-[0.3em]">Dimension 001 // Original</span>
+<div class="h-[1px] w-12 bg-tertiary/50"></div>
+</div>
+</div>
+<!-- Central Product 3D Container -->
+<div class="relative group cursor-pointer h-[500px] flex items-center justify-center">
+<!-- Outer Pulse Rings -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-64 h-64 rounded-full border border-tertiary/20 animate-ping"></div>
+<div class="absolute w-80 h-80 rounded-full border border-tertiary/10 animate-[ping_3s_linear_infinite]"></div>
+</div>
+<!-- The "3D" Can Image -->
+<div class="relative z-20 transform hover:scale-110 transition-transform duration-700 ease-out">
+<img class="h-[450px] object-contain drop-shadow-[0_0_50px_rgba(0,92,180,0.5)]" data-alt="A premium, studio-lit 3D render of a Pepsi Original soda can standing centrally in a high-tech digital void. The can surfaces exhibit hyper-realistic metallic reflections of neon cyan and deep blue lights, with delicate condensation droplets clinging to the cold aluminum texture. The lighting is focused and dramatic, creating a rim-light effect that defines the can's silhouette against a dark, atmospheric background of pulsing light nodes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo4Y74bmRJnWahEVuTs9u59WfevAcBkrhU4rrkIRzoFbmcZt-hDDUlFxy_wO34pJQ1P-3rP4dPK8vd1jF4C4vfOyeUSjaosQfpXHHrq5JCjHQZVAF2KSq5fsvPdkytWNIaokRN6cnrmKJwVQlHtXVRRp8g76KDYwdfrD_Q7anLe_xKLajEcgnWjX-lq7DiPz0lkpPf3Nyl0NwJBlhiqWWcWp45s-7HtPxN3ujcXHZrrjg19Xyb213quRqXoD39DrhwjJroq7WEj8ux"/>
+</div>
+<!-- HUD Overlays -->
+<div class="absolute -left-12 top-1/4 glass-panel rim-light p-4 rounded-xl hidden lg:block">
+<div class="font-technical-label text-technical-label text-tertiary mb-1">CO2 CONCENTRATION</div>
+<div class="font-technical-label text-white text-[18px] font-bold">100% SATURATION</div>
+</div>
+<div class="absolute -right-12 bottom-1/4 glass-panel rim-light p-4 rounded-xl hidden lg:block">
+<div class="font-technical-label text-technical-label text-tertiary mb-1">FLAVOR VECTOR</div>
+<div class="font-technical-label text-white text-[18px] font-bold">MULTIVERSE_CORE_01</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="mt-16 flex flex-col md:flex-row gap-6 items-center">
+<button class="liquid-metallic-gradient text-on-primary font-nav-item text-nav-item px-12 py-5 rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 transition-all duration-300 neon-glow group">
+                    INITIATE SYNC
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-2">bolt</span>
+</button>
+<button class="glass-panel rim-light text-on-surface font-nav-item text-nav-item px-12 py-5 rounded-full hover:bg-white/10 transition-all duration-300 border border-white/20">
+                    VIEW ARCHIVES
+                </button>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+<span class="font-technical-label text-technical-label tracking-widest">SCROLL TO JUMP</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-tertiary to-transparent"></div>
+</div>
+</main>
+<!-- Content Sections (Bento Grid) -->
+<section class="relative z-10 w-full max-w-[1440px] mx-auto px-margin-desktop py-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px]">
+<!-- Bento Item: Vision -->
+<div class="md:col-span-8 glass-panel rim-light rounded-[32px] p-10 flex flex-col justify-end relative overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic laboratory setting where digital holographic interfaces and liquid energy streams are being analyzed by advanced sensors. The lighting is a blend of clinical white and moody electric blue, creating a high-fidelity tech atmosphere. This visual reinforces the concept of Pepsi's intersection between classic refreshment and cutting-edge multidimensional technology, featuring glossy surfaces and sharp light reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_ku6w3kAGKyEjClwf089_uroNf8Zvc9sJyVcbCxjSFEErG4WBJdgKijTTzHc7s_8GvwQayfniAdZqDZpwamuc0yDVCtwJkxl-4qCkkV_HbdXPVR9vB5vr2IwHW49yWIZIc1bLnPBNSvRCEoRmhyVC9pGMzdZ1NhxMEziHfa7d1FXc_YztheAm9m393fKwsKhyeGA5wpzZ3qvp4Eoy3RGsKYEb1Jy1eqhQYOt_AyYkRwhyN9TrS8kZTDRMUCzH5wbxmfc9fzD7wkRW"/>
+<div class="relative z-10">
+<h3 class="font-headline-lg text-headline-lg text-white mb-2">A NEW DIMENSION</h3>
+<p class="font-body-md text-on-surface-variant max-w-md">Experience the iconic taste re-engineered for the digital frontier. Our flavor nodes span across realities.</p>
+</div>
+</div>
+<!-- Bento Item: Pulse -->
+<div class="md:col-span-4 bg-primary-container rounded-[32px] p-10 flex flex-col justify-between border border-white/10 group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-[48px] text-tertiary">Pulse</span>
+<span class="font-technical-label text-tertiary px-3 py-1 rounded-full border border-tertiary/30">LIVE FEED</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-[40px] text-white leading-tight">ACTIVE<br/>PARTICLES</h3>
+<div class="h-2 w-full bg-white/10 rounded-full mt-4 overflow-hidden">
+<div class="h-full w-[70%] bg-tertiary shadow-[0_0_10px_#00d9ff]"></div>
+</div>
+</div>
+</div>
+<!-- Bento Item: Flavor HUD -->
+<div class="md:col-span-4 glass-panel rim-light rounded-[32px] p-8 flex flex-col gap-4">
+<div class="font-technical-label text-tertiary uppercase">Flavor Profile Matrix</div>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center p-3 rounded-xl bg-white/5 border border-white/5">
+<span class="font-nav-item">OAK_SMOKE</span>
+<span class="font-technical-label text-tertiary">12%</span>
+</div>
+<div class="flex justify-between items-center p-3 rounded-xl bg-white/5 border border-white/5">
+<span class="font-nav-item">CITRUS_GLITCH</span>
+<span class="font-technical-label text-tertiary">84%</span>
+</div>
+<div class="flex justify-between items-center p-3 rounded-xl bg-white/5 border border-white/5">
+<span class="font-nav-item">VANILLA_STREAM</span>
+<span class="font-technical-label text-tertiary">04%</span>
+</div>
+</div>
+</div>
+<!-- Bento Item: Visual Collection -->
+<div class="md:col-span-8 glass-panel rim-light rounded-[32px] overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="An abstract composition of fluid metallic liquids swirling in zero gravity, reflecting vibrant electric blue and deep crimson lights. The shapes are smooth and organic, yet possess a high-tech chrome finish that suggests a liquid-metal version of the Pepsi brand identity. The background is a crisp dark space with subtle lens flares and glowing bokeh, creating a sense of luxury and futuristic craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4jqCWO3o65L7-RCpxjSIt0YdVg6zPUCrs6RmTZErJDd_QOkWHAOljeVdEe-YLDs0j4u6epnIcyPdBMhBPE9Do18HLyimh8zKUc61afjf-FNNfW-kb2_l1_ytDTKoWhSiCHHb1ZazhqHYWbqCIPstdh8lvto2n0my7IRjGA4mo5so0FQiIWSQ_77imJV38_LsqEazD-wF7R1PKLr7SjfZ_wtOxx_jtRTS6CG3aAFM9u9S7lshTSSxdlRKKjOkEnnzEvdabzDwa5mte"/>
+<div class="relative z-20 h-full p-10 flex flex-col justify-center max-w-sm">
+<h3 class="font-headline-lg text-headline-lg text-white">CHROME<br/>COLLECTION</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Limited edition dimensional skins for the multiverse traveler.</p>
+<button class="w-fit font-technical-label text-tertiary border-b border-tertiary pb-1 hover:text-white hover:border-white transition-colors">ACCESS VAULT</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-12 flex flex-col items-center gap-8 bg-surface-container-lowest bg-gradient-to-t from-surface-container-lowest to-transparent">
+<div class="font-headline-lg text-on-surface text-[48px] tracking-widest">Pepsi Multiverse</div>
+<div class="flex flex-wrap justify-center gap-12">
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Privacy Protocol</a>
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Terms of Service</a>
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Contact HQ</a>
+</div>
+<div class="h-[1px] w-full max-w-md bg-white/10"></div>
+<div class="font-body-md text-body-md text-outline">
+            © 2024 Pepsi Multiverse. All Dimensions Reserved.
+        </div>
+</footer>
+<!-- Interactive Interactive 3D Nodes (Decorations) -->
+<div class="fixed top-1/4 right-10 z-0 pointer-events-none opacity-20 hidden xl:block">
+<div class="relative flex items-center justify-center">
+<div class="w-4 h-4 bg-tertiary rounded-full shadow-[0_0_15px_#00d9ff]"></div>
+<div class="absolute w-12 h-12 border border-tertiary/40 rounded-full animate-pulse"></div>
+<div class="absolute w-20 h-20 border border-tertiary/20 rounded-full animate-[ping_4s_ease-in-out_infinite]"></div>
+</div>
+</div>
+<div class="fixed bottom-1/4 left-10 z-0 pointer-events-none opacity-20 hidden xl:block">
+<div class="relative flex items-center justify-center">
+<div class="w-4 h-4 bg-tertiary rounded-full shadow-[0_0_15px_#00d9ff]"></div>
+<div class="absolute w-12 h-12 border border-tertiary/40 rounded-full animate-pulse"></div>
+<div class="absolute w-20 h-20 border border-tertiary/20 rounded-full animate-[ping_5s_ease-in-out_infinite]"></div>
+</div>
+</div>
+</body></html>

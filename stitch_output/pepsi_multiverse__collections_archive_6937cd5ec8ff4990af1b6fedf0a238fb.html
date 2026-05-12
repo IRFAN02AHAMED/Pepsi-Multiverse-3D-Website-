@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ffb4a8",
+                      "background": "#111319",
+                      "tertiary-fixed-dim": "#00d9ff",
+                      "secondary-fixed": "#ffdad4",
+                      "on-secondary-container": "#ffbeb3",
+                      "error": "#ffb4ab",
+                      "primary-container": "#005cb4",
+                      "inverse-surface": "#e1e2ea",
+                      "on-primary": "#003063",
+                      "on-secondary-fixed-variant": "#930001",
+                      "surface": "#111319",
+                      "primary-fixed": "#d6e3ff",
+                      "on-surface-variant": "#c2c6d4",
+                      "on-primary-fixed": "#001b3d",
+                      "inverse-on-surface": "#2e3036",
+                      "tertiary-container": "#006679",
+                      "on-surface": "#e1e2ea",
+                      "secondary-container": "#b30002",
+                      "on-primary-fixed-variant": "#00468b",
+                      "surface-bright": "#37393f",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0b0e14",
+                      "surface-container-high": "#272a30",
+                      "on-tertiary-fixed": "#001f26",
+                      "inverse-primary": "#045db5",
+                      "surface-tint": "#a9c7ff",
+                      "primary-fixed-dim": "#a9c7ff",
+                      "on-secondary": "#690000",
+                      "on-error-container": "#ffdad6",
+                      "primary": "#a9c7ff",
+                      "outline": "#8c919d",
+                      "on-primary-container": "#c3d7ff",
+                      "surface-variant": "#32353b",
+                      "tertiary-fixed": "#aeecff",
+                      "on-error": "#690005",
+                      "on-background": "#e1e2ea",
+                      "surface-container-low": "#191c21",
+                      "on-tertiary": "#003641",
+                      "on-secondary-fixed": "#410000",
+                      "tertiary": "#00d9ff",
+                      "on-tertiary-container": "#81e4ff",
+                      "surface-container": "#1d2025",
+                      "secondary": "#ffb4a8",
+                      "outline-variant": "#424752",
+                      "on-tertiary-fixed-variant": "#004e5d",
+                      "surface-container-highest": "#32353b",
+                      "surface-dim": "#111319"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "80px",
+                      "unit": "8px",
+                      "margin-mobile": "24px",
+                      "max-width": "1440px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "technical-label": ["Space Grotesk"],
+                      "headline-lg": ["Bebas Neue"],
+                      "display-hero": ["Bebas Neue"],
+                      "headline-lg-mobile": ["Bebas Neue"],
+                      "nav-item": ["Space Grotesk"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "technical-label": ["12px", {"lineHeight": "120%", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                      "headline-lg": ["64px", {"lineHeight": "100%", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "display-hero": ["120px", {"lineHeight": "110%", "letterSpacing": "0.05em", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["48px", {"lineHeight": "100%", "fontWeight": "400"}],
+                      "nav-item": ["14px", {"lineHeight": "100%", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(32px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-glow {
+            box-shadow: 0px 0px 20px rgba(0, 217, 255, 0.15);
+        }
+        .liquid-gradient {
+            background: linear-gradient(135deg, #005cb4 0%, #00d9ff 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 217, 255, 0.3);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-tertiary selection:text-on-tertiary">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface/40 backdrop-blur-[40px] border-b border-white/10 shadow-[0px_0px_20px_rgba(0,217,255,0.2)]">
+<div class="font-display-hero text-primary tracking-widest text-[32px]">Pepsi Multiverse</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center gap-8">
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Multiverse</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Flavors</a>
+<a class="font-nav-item text-nav-item text-tertiary border-b-2 border-tertiary pb-1" href="#">Collections</a>
+<a class="font-nav-item text-nav-item text-on-surface-variant hover:text-tertiary hover:scale-105 transition-all duration-300" href="#">Experience</a>
+</div>
+<button class="bg-primary-container text-on-primary px-6 py-2 rounded-full font-nav-item text-nav-item hover:scale-105 active:scale-95 transition-all duration-300">
+            Explore
+        </button>
+</nav>
+<!-- Main Cinematic Content -->
+<main class="relative min-h-screen pt-32 pb-20 overflow-hidden">
+<!-- Background Ambient Elements -->
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] bg-primary-container/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-tertiary/10 blur-[100px] rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20" style="background-image: radial-gradient(circle, rgba(0,217,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<!-- Header Section -->
+<header class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div>
+<span class="font-technical-label text-technical-label text-tertiary uppercase tracking-[0.3em] block mb-4">The Complete Archive</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface uppercase">Flavor Collections</h1>
+</div>
+<!-- HUD Filters -->
+<div class="flex flex-wrap gap-3 glass-card p-2 rounded-xl">
+<button class="px-6 py-2 rounded-lg bg-tertiary text-on-tertiary font-technical-label text-technical-label">ALL DIMENSIONS</button>
+<button class="px-6 py-2 rounded-lg hover:bg-white/5 transition-colors font-technical-label text-technical-label text-on-surface-variant">CORE FLAVORS</button>
+<button class="px-6 py-2 rounded-lg hover:bg-white/5 transition-colors font-technical-label text-technical-label text-on-surface-variant">LIMITED DIMENSIONS</button>
+<button class="px-6 py-2 rounded-lg hover:bg-white/5 transition-colors font-technical-label text-technical-label text-on-surface-variant">ENERGY LEVELS</button>
+</div>
+</div>
+</header>
+<!-- Bento Grid Gallery -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- 1. Original (Featured) -->
+<div class="md:col-span-8 group relative aspect-[16/9] md:aspect-auto overflow-hidden rounded-xl glass-card transition-all duration-500 hover:shadow-[0px_0px_40px_rgba(169,199,255,0.2)]">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="A high-fidelity 3D render of a Pepsi Original can suspended in a deep space void filled with sapphire blue stardust and glowing crystalline structures. The lighting is cinematic, highlighting the metallic reflections and condensation on the surface. The aesthetic is futuristic and luxurious, emphasizing deep primary blues and sharp highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANYVPZSPHHD2_KBqCqKC2gUEkhaRnntUApxVnCn9yuVW8rq1BWh57V9EFH4UKQZW7odVYsOXjI6WBF_TR_W814GnJP-9Wy5bX23tq5FacU_ta8eT7ApqvIsI55xJIJmtUPvjCk9xHjV-VU_iAWEH6Mm6ye3PD3Gk-All1Ez21yAfSJh_7AAssotrWJfGdFSsY35CSyKS5tITuHKsfqMWDgT2HU6ejKQKai2IewzUme_xcbwaog1Olo7PLvEinA6EZThIWrlqCUgOq6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
+<div>
+<div class="flex gap-2 mb-4">
+<span class="bg-primary/20 border border-primary/40 text-primary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Molecular Profile: CL-01</span>
+<span class="bg-white/10 border border-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Legacy Core</span>
+</div>
+<h2 class="font-display-hero text-[64px] leading-none mb-2">ORIGINAL</h2>
+<p class="text-on-surface-variant max-w-md">The genesis dimension. A perfectly balanced harmonic of cola nut and citrus, refined across countless temporal shifts.</p>
+</div>
+<button class="liquid-gradient text-on-primary px-8 py-3 rounded-lg font-technical-label text-technical-label flex items-center gap-2 group-hover:shadow-[0_0_25px_rgba(0,217,255,0.5)] transition-all">
+                            VENTURE <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- 2. Zero Sugar -->
+<div class="md:col-span-4 group relative min-h-[400px] overflow-hidden rounded-xl glass-card transition-all duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" data-alt="A matte black Pepsi Zero Sugar 3D render appearing from a dense, neon blue electric mist. The environment is dark and moody with sharp geometric light lines reflecting off the can's surfaces. The style is sleek, tech-focused, and premium, using a high-contrast palette of pitch black and electric cyan." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCppoAoBgFG7gUXMCGGxcnPM5pGgdQISwXir2ODYHuGFgvrkNQkrymri8-BSf8LU-_EAT-q9lEoRjW0mYZYu6Lss7I5y97AHO71eijyd-ho1lDgf8rgzbB-UWKa4lyws3tbU_ZRAtnEvgAWWPZHWEmg5MggDGszXznKoPZuhCUMnjL87KKzmXoOi1zgjEZ-6US1jhlNVqKU3XKNE-GXefj_G-5sBHD9TbZ9o71_gvRuiGi214GUo9JsCm-pToMnVF5ouwQsuNURE6ED"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<span class="bg-tertiary/20 border border-tertiary/40 text-tertiary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase block w-fit mb-4">Molecular Profile: ZERO-X</span>
+<h2 class="font-display-hero text-[48px] leading-none mb-4">ZERO SUGAR</h2>
+<button class="border border-white/20 hover:bg-white/10 text-white px-6 py-2 rounded-lg font-technical-label text-technical-label transition-all">
+                            VENTURE
+                        </button>
+</div>
+</div>
+<!-- 3. Wild Cherry -->
+<div class="md:col-span-4 group relative min-h-[400px] overflow-hidden rounded-xl glass-card transition-all duration-500">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary-container/30 to-transparent"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<span class="bg-secondary/20 border border-secondary/40 text-secondary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase block w-fit mb-4">Molecular Profile: CH-44</span>
+<h2 class="font-display-hero text-[48px] leading-none mb-2">WILD CHERRY</h2>
+<p class="text-on-surface-variant text-sm mb-6">Explosive crimson energy surges through this high-intensity dimension.</p>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-lg font-technical-label text-technical-label transition-all">
+                            VENTURE
+                        </button>
+</div>
+</div>
+<!-- 4. Electric Limited Edition -->
+<div class="md:col-span-8 group relative min-h-[400px] overflow-hidden rounded-xl glass-card border-tertiary/30">
+<div class="absolute inset-0 liquid-gradient opacity-10"></div>
+<!-- Particle effect visual placeholder -->
+<div class="absolute inset-0 opacity-40 mix-blend-screen" data-alt="A macro shot of vibrant electric blue liquid particles and swirling bubbles in a futuristic zero-gravity environment. The scene is illuminated by neon cyan flashes and features glowing energy filaments. The mood is high-energy, refreshing, and ultra-modern, with a cold, metallic color scheme." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_ge6v8VvnWVw8muMhPWvHtLqzxpwqlYmfkeTjArsIgM6nzsSrUXesf4gwJ2ylUxN7RXRvwbLOMMISlSUbW-65KX1LKqo7mlZ1yvA9g3PvVdBErzwTxm0pD6IuTt739fIbAZYv-Oxs584PJ7GHbA9uHFEYQEV7hwxZI7t7pIWegU-ADSQ61-pJCv_TkgIGkHvp0x2oYD7e5KFUe-0pOJyRt_JysxStzIcyQXrZ6jS38AB3F4DOLtF26LNequZdQK8-EYtIT8bK9_Sg'); background-size: cover;"></div>
+<div class="absolute top-8 right-8 bg-tertiary text-on-tertiary px-4 py-1 rounded-full text-[12px] font-bold tracking-widest animate-pulse">LIMITED DIMENSION</div>
+<div class="absolute inset-0 p-12 flex flex-col justify-center">
+<h2 class="font-display-hero text-[80px] leading-[0.9] mb-4 text-tertiary">ELECTRIC<br/>EDITION</h2>
+<div class="flex gap-8 items-center">
+<div class="flex flex-col">
+<span class="font-technical-label text-[10px] text-outline uppercase">Voltage</span>
+<span class="font-technical-label text-xl text-tertiary">9000.E</span>
+</div>
+<div class="h-10 w-[1px] bg-white/10"></div>
+<div class="flex flex-col">
+<span class="font-technical-label text-[10px] text-outline uppercase">Duration</span>
+<span class="font-technical-label text-xl text-white">TEMPORARY</span>
+</div>
+</div>
+<button class="mt-8 w-fit border-2 border-tertiary text-tertiary hover:bg-tertiary hover:text-on-tertiary px-10 py-4 rounded-lg font-technical-label text-[16px] transition-all duration-300">
+                            INFILTRATE DIMENSION
+                        </button>
+</div>
+</div>
+<!-- Row 3: Grid of small dimensions -->
+<div class="md:col-span-3 group glass-card p-6 rounded-xl transition-all hover:scale-[1.02]">
+<div class="h-40 bg-gradient-to-t from-green-500/20 to-transparent rounded-lg mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-400 text-5xl">ac_unit</span>
+</div>
+<h3 class="font-headline-lg text-3xl mb-1">LIME</h3>
+<span class="font-technical-label text-[10px] text-green-400 block mb-4">NEON-88 PROFILE</span>
+<button class="w-full py-2 border border-white/10 rounded font-technical-label text-xs hover:bg-white/5 transition-colors">VENTURE</button>
+</div>
+<div class="md:col-span-3 group glass-card p-6 rounded-xl transition-all hover:scale-[1.02]">
+<div class="h-40 bg-gradient-to-t from-orange-500/20 to-transparent rounded-lg mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-400 text-5xl">wb_sunny</span>
+</div>
+<h3 class="font-headline-lg text-3xl mb-1">MANGO</h3>
+<span class="font-technical-label text-[10px] text-orange-400 block mb-4">TROPIC-S9 PROFILE</span>
+<button class="w-full py-2 border border-white/10 rounded font-technical-label text-xs hover:bg-white/5 transition-colors">VENTURE</button>
+</div>
+<div class="md:col-span-3 group glass-card p-6 rounded-xl transition-all hover:scale-[1.02]">
+<div class="h-40 bg-gradient-to-t from-blue-400/20 to-transparent rounded-lg mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-300 text-5xl">water_drop</span>
+</div>
+<h3 class="font-headline-lg text-3xl mb-1">BLUE</h3>
+<span class="font-technical-label text-[10px] text-blue-300 block mb-4">COBALT-VX PROFILE</span>
+<button class="w-full py-2 border border-white/10 rounded font-technical-label text-xs hover:bg-white/5 transition-colors">VENTURE</button>
+</div>
+<div class="md:col-span-3 group glass-card p-6 rounded-xl transition-all hover:scale-[1.02]">
+<div class="h-40 bg-gradient-to-t from-purple-500/20 to-transparent rounded-lg mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-purple-400 text-5xl">bolt</span>
+</div>
+<h3 class="font-headline-lg text-3xl mb-1">NITRO</h3>
+<span class="font-technical-label text-[10px] text-purple-400 block mb-4">VELOCITY-MAX</span>
+<button class="w-full py-2 border border-white/10 rounded font-technical-label text-xs hover:bg-white/5 transition-colors">VENTURE</button>
+</div>
+<!-- Final 3 Small -->
+<div class="md:col-span-4 group glass-card p-6 rounded-xl transition-all flex items-center gap-6">
+<div class="w-24 h-24 rounded-full bg-yellow-900/20 flex-shrink-0 border border-yellow-500/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-yellow-600 text-3xl">restaurant</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-3xl mb-1">VANILLA</h3>
+<span class="font-technical-label text-[10px] text-outline">SMOOTH SYNTH-V</span>
+</div>
+<button class="ml-auto material-symbols-outlined text-outline hover:text-white transition-colors">arrow_forward_ios</button>
+</div>
+<div class="md:col-span-4 group glass-card p-6 rounded-xl transition-all flex items-center gap-6">
+<div class="w-24 h-24 rounded-full bg-red-900/20 flex-shrink-0 border border-red-500/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-500 text-3xl">speed</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-3xl mb-1">MAX</h3>
+<span class="font-technical-label text-[10px] text-outline">ULTRA ENERGIZED</span>
+</div>
+<button class="ml-auto material-symbols-outlined text-outline hover:text-white transition-colors">arrow_forward_ios</button>
+</div>
+<div class="md:col-span-4 group bg-surface-container-high/40 p-6 rounded-xl border border-white/5 flex items-center justify-center cursor-pointer hover:bg-surface-container-highest transition-colors">
+<div class="text-center">
+<span class="material-symbols-outlined text-outline text-4xl block mb-2">add_circle</span>
+<p class="font-technical-label text-outline uppercase tracking-wider">Synchronize New Dimensions</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full px-margin-desktop py-12 flex flex-col items-center gap-8 bg-surface-container-lowest relative z-10">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent pointer-events-none"></div>
+<div class="font-headline-lg text-on-surface text-[48px] tracking-widest relative z-10">PEPSI MULTIVERSE</div>
+<div class="flex gap-12 relative z-10">
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Privacy Protocol</a>
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Terms of Service</a>
+<a class="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] transition-transform duration-500" href="#">Contact HQ</a>
+</div>
+<p class="font-technical-label text-technical-label text-outline/50 relative z-10">
+            © 2024 Pepsi Multiverse. All Dimensions Reserved.
+        </p>
+</footer>
+<!-- Interactive Node (HUD Decorative) -->
+<div class="fixed bottom-10 right-10 z-50 flex items-center justify-center">
+<div class="absolute w-12 h-12 rounded-full border border-tertiary opacity-20 animate-ping"></div>
+<div class="absolute w-8 h-8 rounded-full border border-tertiary opacity-40 animate-pulse"></div>
+<div class="w-4 h-4 rounded-full bg-tertiary shadow-[0_0_15px_rgba(0,217,255,0.8)]"></div>
+<div class="absolute bottom-full mb-4 right-0 glass-card p-4 rounded-lg hidden group-hover:block whitespace-nowrap">
+<span class="font-technical-label text-tertiary">CORE SYSTEM: ONLINE</span>
+</div>
+</div>
+</body></html>
