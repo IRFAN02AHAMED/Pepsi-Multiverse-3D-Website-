@@ -6,59 +6,69 @@
 
 # Test info
 
-- Name: basic-flow.spec.ts >> Pepsi Multiverse E2E Flow >> navigation to CTA page and form submission
-- Location: tests\basic-flow.spec.ts:56:7
+- Name: basic-flow.spec.ts >> Pepsi Multiverse E2E Flow >> navigation to collections and filtering
+- Location: tests\basic-flow.spec.ts:19:7
 
 # Error details
 
 ```
-Test timeout of 30000ms exceeded.
-```
+Error: expect(page).toHaveURL(expected) failed
 
-```
-Error: page.fill: Test timeout of 30000ms exceeded.
+Expected: "http://localhost:3000/collections"
+Received: "http://localhost:3000/"
+Timeout:  5000ms
+
 Call log:
-  - waiting for locator('#field-name')
+  - Expect "toHaveURL" with timeout 5000ms
+    8 × unexpected value "http://localhost:3000/"
 
 ```
-
-# Page snapshot
 
 ```yaml
-- generic [active] [ref=e1]:
-  - navigation [ref=e2]:
-    - link "Pepsi Multiverse" [ref=e3] [cursor=pointer]:
-      - /url: /
-    - generic [ref=e4]:
-      - link "Multiverse" [ref=e5] [cursor=pointer]:
-        - /url: /
-      - link "Flavors" [ref=e6] [cursor=pointer]:
-        - /url: /viewer
-      - link "Collections" [ref=e7] [cursor=pointer]:
-        - /url: /collections
-      - link "Experience" [ref=e8] [cursor=pointer]:
-        - /url: /story
-    - link "Explore" [ref=e9] [cursor=pointer]:
-      - /url: /collections
-      - button "Explore" [ref=e10]:
-        - img [ref=e11]
-        - text: Explore
-  - generic [ref=e15]:
-    - heading "404" [level=1] [ref=e16]
-    - heading "This page could not be found." [level=2] [ref=e18]
-  - contentinfo [ref=e19]:
-    - generic [ref=e20]: Pepsi Multiverse
-    - generic [ref=e21]:
-      - link "Privacy Protocol" [ref=e22] [cursor=pointer]:
-        - /url: "#"
-      - link "Terms of Service" [ref=e23] [cursor=pointer]:
-        - /url: "#"
-      - link "Contact HQ" [ref=e24] [cursor=pointer]:
-        - /url: "#"
-    - generic [ref=e26]: © 2024 Pepsi Multiverse. All Dimensions Reserved.
-  - button "Open Next.js Dev Tools" [ref=e32] [cursor=pointer]:
-    - img [ref=e33]
-  - alert [ref=e36]
+- navigation:
+  - link "Pepsi Multiverse":
+    - /url: /
+  - link "Multiverse":
+    - /url: /
+  - link "Flavors":
+    - /url: /viewer
+  - link "Collections":
+    - /url: /collections
+  - link "Experience":
+    - /url: /story
+  - link "Explore":
+    - /url: /collections
+    - button "Explore"
+- main:
+  - text: Dimension 001 // Core Sync
+  - heading "REFRESH REALITY" [level=1]
+  - text: Molecular State STABLE Synchronization 99.98%
+  - link "INITIATE SYNC":
+    - /url: /cta
+    - button "INITIATE SYNC"
+  - link "VIEW ARCHIVES":
+    - /url: /collections
+  - link "THE MULTIVERSE STORY Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.":
+    - /url: /story
+    - heading "THE MULTIVERSE STORY" [level=3]
+    - paragraph: Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.
+  - text: System Status
+  - heading "CORE SYNC OPTIMAL" [level=3]
+  - text: Active Particles OAK_SMOKE 12% CITRUS_GLITCH 84% VANILLA_STREAM 04%
+  - link "CHROME COLLECTION Limited edition skins for your dimensional interface. Available for immediate synchronization.":
+    - /url: /collections
+    - heading "CHROME COLLECTION" [level=3]
+    - paragraph: Limited edition skins for your dimensional interface. Available for immediate synchronization.
+- contentinfo:
+  - text: Pepsi Multiverse
+  - link "Privacy Protocol":
+    - /url: "#"
+  - link "Terms of Service":
+    - /url: "#"
+  - link "Contact HQ":
+    - /url: "#"
+  - text: © 2024 Pepsi Multiverse. All Dimensions Reserved.
+- alert
 ```
 
 # Test source
@@ -87,7 +97,8 @@ Call log:
   21 |     
   22 |     // Navigate to collections via bento grid (using the heading text)
   23 |     await page.getByText(/CHROME/i).first().click();
-  24 |     await expect(page).toHaveURL('/collections');
+> 24 |     await expect(page).toHaveURL('/collections');
+     |                        ^ Error: expect(page).toHaveURL(expected) failed
   25 |     
   26 |     // Check for collection header
   27 |     await expect(page.locator('h1')).toContainText('Flavor Collections');
@@ -125,8 +136,7 @@ Call log:
   59 |     await expect(page).toHaveURL('/cta');
   60 |     
   61 |     // Fill the form
-> 62 |     await page.fill('#field-name', 'Test User');
-     |                ^ Error: page.fill: Test timeout of 30000ms exceeded.
+  62 |     await page.fill('#field-name', 'Test User');
   63 |     await page.fill('#field-email', 'test@example.com');
   64 |     await page.selectOption('#field-dimension', 'original');
   65 |     await page.fill('#field-quantity', '2');

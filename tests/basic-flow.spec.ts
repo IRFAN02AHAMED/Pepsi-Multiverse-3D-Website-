@@ -24,7 +24,7 @@ test.describe('Pepsi Multiverse E2E Flow', () => {
     await expect(page).toHaveURL('/collections');
     
     // Check for collection header
-    await expect(page.locator('h1')).toContainText('Flavor Collections');
+    await expect(page.locator('h1')).toContainText('FLAVOR COLLECTIONS');
     
     // Check filtering
     const filterBtn = page.getByRole('button', { name: 'CORE FLAVORS' });

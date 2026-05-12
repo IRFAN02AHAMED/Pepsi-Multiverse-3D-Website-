@@ -12,23 +12,63 @@
 # Error details
 
 ```
-Error: expect(locator).toContainText(expected) failed
+Error: expect(page).toHaveURL(expected) failed
 
-Locator: locator('h1')
-Expected substring: "Flavor Collections"
-Received string:    "404"
-Timeout: 5000ms
+Expected: "http://localhost:3000/collections"
+Received: "http://localhost:3000/"
+Timeout:  5000ms
 
 Call log:
-  - Expect "toContainText" with timeout 5000ms
-  - waiting for locator('h1')
-    9 × locator resolved to <h1 class="next-error-h1">404</h1>
-      - unexpected value "404"
+  - Expect "toHaveURL" with timeout 5000ms
+    8 × unexpected value "http://localhost:3000/"
 
 ```
 
 ```yaml
-- heading "404" [level=1]
+- navigation:
+  - link "Pepsi Multiverse":
+    - /url: /
+  - link "Multiverse":
+    - /url: /
+  - link "Flavors":
+    - /url: /viewer
+  - link "Collections":
+    - /url: /collections
+  - link "Experience":
+    - /url: /story
+  - link "Explore":
+    - /url: /collections
+    - button "Explore"
+- main:
+  - text: Dimension 001 // Core Sync
+  - heading "REFRESH REALITY" [level=1]
+  - text: Molecular State STABLE Synchronization 99.98%
+  - link "INITIATE SYNC":
+    - /url: /cta
+    - button "INITIATE SYNC"
+  - link "VIEW ARCHIVES":
+    - /url: /collections
+  - link "THE MULTIVERSE STORY Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.":
+    - /url: /story
+    - heading "THE MULTIVERSE STORY" [level=3]
+    - paragraph: Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.
+  - text: System Status
+  - heading "CORE SYNC OPTIMAL" [level=3]
+  - text: Active Particles OAK_SMOKE 12% CITRUS_GLITCH 84% VANILLA_STREAM 04%
+  - link "CHROME COLLECTION Limited edition skins for your dimensional interface. Available for immediate synchronization.":
+    - /url: /collections
+    - heading "CHROME COLLECTION" [level=3]
+    - paragraph: Limited edition skins for your dimensional interface. Available for immediate synchronization.
+- contentinfo:
+  - text: Pepsi Multiverse
+  - link "Privacy Protocol":
+    - /url: "#"
+  - link "Terms of Service":
+    - /url: "#"
+  - link "Contact HQ":
+    - /url: "#"
+  - text: © 2024 Pepsi Multiverse. All Dimensions Reserved.
+- alert
 ```
 
 # Test source
@@ -57,11 +97,11 @@ Call log:
   21 |     
   22 |     // Navigate to collections via bento grid (using the heading text)
   23 |     await page.getByText(/CHROME/i).first().click();
-  24 |     await expect(page).toHaveURL('/collections');
+> 24 |     await expect(page).toHaveURL('/collections');
+     |                        ^ Error: expect(page).toHaveURL(expected) failed
   25 |     
   26 |     // Check for collection header
-> 27 |     await expect(page.locator('h1')).toContainText('Flavor Collections');
-     |                                      ^ Error: expect(locator).toContainText(expected) failed
+  27 |     await expect(page.locator('h1')).toContainText('Flavor Collections');
   28 |     
   29 |     // Check filtering
   30 |     const filterBtn = page.getByRole('button', { name: 'CORE FLAVORS' });
