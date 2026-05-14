@@ -9,26 +9,26 @@ export function Footer() {
       <div className="flex flex-wrap justify-center gap-12">
         <Link
           className="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] duration-500"
-          href="#"
+          href="/privacy"
         >
           Privacy Protocol
         </Link>
         <Link
           className="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] duration-500"
-          href="#"
+          href="/terms"
         >
           Terms of Service
         </Link>
         <Link
           className="font-technical-label text-technical-label text-outline hover:text-primary transition-colors hover:translate-y-[-4px] duration-500"
-          href="#"
+          href="/contact"
         >
           Contact HQ
         </Link>
       </div>
       <div className="h-[1px] w-full max-w-md bg-white/10"></div>
       <div className="font-body-md text-body-md text-outline">
-        © 2024 Pepsi Multiverse. All Dimensions Reserved.
+        © {new Date().getFullYear()} Pepsi Multiverse. All Dimensions Reserved.
       </div>
     </footer>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, Suspense } from "react";
+import { useRef, Suspense, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Float, PerspectiveCamera, Environment, ContactShadows, useTexture } from "@react-three/drei";
 import * as THREE from "three";
@@ -8,6 +8,8 @@ import * as THREE from "three";
 interface PepsiCan3DProps {
   flavorId: string;
   highIllumination?: boolean;
+  explodedProgress?: number;
+  showFizz?: boolean;
 }
 
 const textureMap: Record<string, string> = {
@@ -51,9 +53,35 @@ const getAuthenticTexture = (flavorId: string) => {
   return textureMap[flavorId] || textureMap.original;
 };
 
-export function PepsiCan3D({ flavorId, highIllumination }: PepsiCan3DProps) {
+function FizzParticle() {
+  const ref = useRef<THREE.Mesh>(null);
+  const speed = useRef(Math.random() * 0.02 + 0.01);
+  const xOffset = useRef((Math.random() - 0.5) * 1.5);
+  const zOffset = useRef((Math.random() - 0.5) * 1.5);
+
+  useFrame((state) => {
+    if (ref.current) {
+      ref.current.position.y += speed.current;
+      if (ref.current.position.y > 2) {
+        ref.current.position.y = 0;
+      }
+    }
+  });
+
+  return (
+    <mesh ref={ref} position={[xOffset.current, 0, zOffset.current]}>
+      <sphereGeometry args={[0.02, 8, 8]} />
+      <meshBasicMaterial color="#ffffff" transparent opacity={0.6} />
+    </mesh>
+  );
+}
+
+export function PepsiCan3D({ flavorId, highIllumination, explodedProgress = 0, showFizz = false }: PepsiCan3DProps) {
   const canRef = useRef<THREE.Group>(null);
+  const [currentExploded, setCurrentExploded] = useState(0);
   const textureUrl = getAuthenticTexture(flavorId);
+  
+  const tabRotationX = useRef(0);
   
   // Load texture
   const texture = useTexture(textureUrl);
@@ -64,6 +92,11 @@ export function PepsiCan3D({ flavorId, highIllumination }: PepsiCan3DProps) {
     if (canRef.current) {
       canRef.current.rotation.y += 0.005; // Cinematic rotation
     }
+    // Lerp exploded progress for smooth transition
+    setCurrentExploded(THREE.MathUtils.lerp(currentExploded, explodedProgress, 0.05));
+    // Lerp pull tab rotation
+    const targetTabRotation = (showFizz || explodedProgress > 0) ? -Math.PI / 3 : 0;
+    tabRotationX.current = THREE.MathUtils.lerp(tabRotationX.current, targetTabRotation, 0.1);
   });
 
   return (
@@ -81,8 +114,23 @@ export function PepsiCan3D({ flavorId, highIllumination }: PepsiCan3DProps) {
         />
       </mesh>
 
+      {/* Condensation Layer (Visual Depth) */}
+      <mesh position={[0, 0, 0]} scale={[1.015, 1.015, 1.015]}>
+        <cylinderGeometry args={[1, 1, 2.4, 64]} />
+        <meshPhysicalMaterial
+          transparent
+          opacity={0.25}
+          transmission={0.8}
+          thickness={0.2}
+          roughness={0.25}
+          ior={1.5}
+          clearcoat={1}
+          clearcoatRoughness={0.1}
+        />
+      </mesh>
+
       {/* 2. Top Shoulder (Tapered) */}
-      <mesh position={[0, 1.35, 0]}>
+      <mesh position={[0, 1.35 + (currentExploded * 0.5), 0]}>
         <cylinderGeometry args={[0.85, 1, 0.3, 64]} />
         <meshPhysicalMaterial
           color="#d1d5db"
@@ -93,7 +141,7 @@ export function PepsiCan3D({ flavorId, highIllumination }: PepsiCan3DProps) {
       </mesh>
 
       {/* 3. Top Rim & Cap */}
-      <mesh position={[0, 1.55, 0]}>
+      <mesh position={[0, 1.55 + (currentExploded * 1.2), 0]}>
         <cylinderGeometry args={[0.85, 0.85, 0.1, 64]} />
         <meshPhysicalMaterial
           color="#9ca3af"
@@ -103,7 +151,7 @@ export function PepsiCan3D({ flavorId, highIllumination }: PepsiCan3DProps) {
       </mesh>
 
       {/* 4. Bottom Shoulder (Tapered) */}
-      <mesh position={[0, -1.35, 0]}>
+      <mesh position={[0, -1.35 - (currentExploded * 0.5), 0]}>
         <cylinderGeometry args={[1, 0.85, 0.3, 64]} />
         <meshPhysicalMaterial
           color="#d1d5db"
@@ -113,7 +161,7 @@ export function PepsiCan3D({ flavorId, highIllumination }: PepsiCan3DProps) {
       </mesh>
 
       {/* 5. Bottom Rim */}
-      <mesh position={[0, -1.55, 0]}>
+      <mesh position={[0, -1.55 - (currentExploded * 1.2), 0]}>
         <cylinderGeometry args={[0.85, 0.85, 0.1, 64]} />
         <meshPhysicalMaterial
           color="#9ca3af"
@@ -123,15 +171,81 @@ export function PepsiCan3D({ flavorId, highIllumination }: PepsiCan3DProps) {
       </mesh>
 
       {/* 6. Pull Tab */}
-      <mesh position={[0.2, 1.62, 0]} rotation={[0, 0.2, 0]}>
+      <mesh position={[0.2, 1.62 + (currentExploded * 1.2), 0]} rotation={[tabRotationX.current, 0.2, 0]}>
         <boxGeometry args={[0.4, 0.02, 0.2]} />
         <meshPhysicalMaterial color="#9ca3af" metalness={1} roughness={0.1} />
       </mesh>
+
+      {/* Fizz Particle System */}
+      {showFizz && (
+        <group position={[0, 1.6, 0]}>
+          {[...Array(20)].map((_, i) => (
+            <FizzParticle key={i} />
+          ))}
+        </group>
+      )}
     </group>
   );
 }
 
-export function PepsiScene({ flavorId, highIllumination }: { flavorId: string; highIllumination?: boolean }) {
+function AmbientParticles({ flavorId }: { flavorId: string }) {
+  const points = useRef<THREE.Points>(null);
+  const count = 200;
+  
+  const [positions] = useState(() => {
+    const pos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      pos[i * 3] = (Math.random() - 0.5) * 10;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 10;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 10;
+    }
+    return pos;
+  });
+
+  const getColor = () => {
+    switch (flavorId) {
+      case "wild-cherry": return "#ff1e1e";
+      case "mango": return "#ffb700";
+      case "lime": return "#32ff32";
+      case "vanilla": return "#f3e5ab";
+      case "max": return "#ffffff";
+      default: return "#00d9ff";
+    }
+  };
+
+  useFrame((state) => {
+    if (points.current) {
+      points.current.rotation.y += 0.001;
+      points.current.rotation.x += 0.0005;
+    }
+  });
+
+  return (
+    <points ref={points}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial size={0.03} color={getColor()} transparent opacity={0.3} sizeAttenuation />
+    </points>
+  );
+}
+
+export function PepsiScene({ 
+  flavorId, 
+  highIllumination, 
+  explodedProgress = 0,
+  showFizz = false 
+}: { 
+  flavorId: string; 
+  highIllumination?: boolean;
+  explodedProgress?: number;
+  showFizz?: boolean;
+}) {
   return (
     <Suspense fallback={null}>
       <PerspectiveCamera makeDefault position={[0, 0, 7]} fov={35} />
@@ -139,8 +253,15 @@ export function PepsiScene({ flavorId, highIllumination }: { flavorId: string; h
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={highIllumination ? 2.5 : 1.5} castShadow />
       <pointLight position={[-10, -5, -10]} intensity={highIllumination ? 1.2 : 0.8} />
       
+      <AmbientParticles flavorId={flavorId} />
+
       <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.2}>
-        <PepsiCan3D flavorId={flavorId} highIllumination={highIllumination} />
+        <PepsiCan3D 
+          flavorId={flavorId} 
+          highIllumination={highIllumination} 
+          explodedProgress={explodedProgress}
+          showFizz={showFizz}
+        />
       </Float>
 
       <Environment preset="studio" />

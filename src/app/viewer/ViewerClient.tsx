@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { collectionsData } from "@/lib/data";
@@ -49,18 +49,28 @@ function StatBar({ label, value, icon: Icon }: { label: string; value: number; i
 export default function ViewerClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { activeFlavor, setFlavor } = useFlavorStore();
+  const { activeFlavor, setFlavor, startSync } = useFlavorStore();
   const [rotating, setRotating] = useState(false);
   const [rotation, setRotation] = useState(0);
+  const [exploded, setExploded] = useState(false);
+  const [showFizz, setShowFizz] = useState(false);
 
   const flavors = collectionsData.filter((c) => c.id in flavorStats);
 
+  const hasSynced = useRef(false);
+
   useEffect(() => {
+    // Automatically trigger sync transition on entry for immersion
+    if (!hasSynced.current) {
+      startSync();
+      hasSynced.current = true;
+    }
+
     const flavorParam = searchParams.get("flavor");
     if (flavorParam && flavorStats[flavorParam]) {
       setFlavor(flavorParam);
     }
-  }, [searchParams, setFlavor]);
+  }, [searchParams, setFlavor, startSync]);
 
   const currentIndex = flavors.findIndex((f) => f.id === activeFlavor);
   const current = flavors[currentIndex >= 0 ? currentIndex : 0];
@@ -160,7 +170,11 @@ export default function ViewerClient() {
               </div>
               
               <Canvas shadows className="w-full h-full">
-                <PepsiScene flavorId={current.id} />
+                <PepsiScene 
+                  flavorId={current.id} 
+                  explodedProgress={exploded ? 1 : 0}
+                  showFizz={showFizz}
+                />
                 <OrbitControls 
                   enableDamping 
                   dampingFactor={0.05}
@@ -180,16 +194,40 @@ export default function ViewerClient() {
               </div>
             </div>
 
-            <button
-              id="rotate-btn"
-              onMouseEnter={() => setRotating(true)}
-              onMouseLeave={() => setRotating(false)}
-              onClick={handleRotate}
-              className="mt-4 glass-panel rim-light px-6 py-3 rounded-full flex items-center gap-2 font-technical-label text-technical-label text-tertiary border border-tertiary/30 hover:border-tertiary transition-all disabled:opacity-50"
-            >
-              <RotateCcw size={16} className={rotating ? "animate-spin" : ""} />
-              SLOW ORBIT
-            </button>
+            <div className="flex gap-4 mt-4">
+              <button
+                id="rotate-btn"
+                onMouseEnter={() => setRotating(true)}
+                onMouseLeave={() => setRotating(false)}
+                onClick={handleRotate}
+                className="glass-panel rim-light px-6 py-3 rounded-full flex items-center gap-2 font-technical-label text-technical-label text-tertiary border border-tertiary/30 hover:border-tertiary transition-all disabled:opacity-50"
+              >
+                <RotateCcw size={16} className={rotating ? "animate-spin" : ""} />
+                SLOW ORBIT
+              </button>
+
+              <button
+                onClick={() => setExploded(!exploded)}
+                className={cn(
+                  "glass-panel rim-light px-6 py-3 rounded-full flex items-center gap-2 font-technical-label text-technical-label transition-all border",
+                  exploded ? "bg-tertiary/20 border-tertiary text-white shadow-[0_0_15px_#00d9ff]" : "text-tertiary border-tertiary/30 hover:border-tertiary"
+                )}
+              >
+                <Box size={16} />
+                {exploded ? "HIDE DETAILS" : "SHOW DETAILS"}
+              </button>
+
+              <button
+                onClick={() => setShowFizz(!showFizz)}
+                className={cn(
+                  "glass-panel rim-light px-6 py-3 rounded-full flex items-center gap-2 font-technical-label text-technical-label transition-all border",
+                  showFizz ? "bg-primary/20 border-primary text-white shadow-[0_0_15px_#2563eb]" : "text-primary border-primary/30 hover:border-primary"
+                )}
+              >
+                <Droplets size={16} />
+                {showFizz ? "STOP FIZZ" : "TRIGGER FIZZ"}
+              </button>
+            </div>
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -201,7 +239,7 @@ export default function ViewerClient() {
               >
                 <h2 className="font-headline-lg text-headline-lg">{current.name}</h2>
                 <p className="font-technical-label text-technical-label text-outline mt-1">
-                  MOLECULAR PROFILE: {stats.dimension}
+                  TASTE PROFILE: {stats.dimension}
                 </p>
               </motion.div>
             </AnimatePresence>
@@ -211,11 +249,11 @@ export default function ViewerClient() {
           <div className="lg:col-span-3 flex flex-col gap-6">
             <GlassCard className="p-6 rounded-2xl!">
               <div className="font-technical-label text-technical-label text-tertiary uppercase mb-4 tracking-widest">
-                FLAVOR ANALYSIS
+                TASTE STATS
               </div>
               <AnimatePresence mode="wait">
                 <motion.div key={current.id + "_stats"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-5">
-                  <StatBar label="CO₂ Saturation" value={stats.co2} icon={Droplets} />
+                  <StatBar label="Fizziness" value={stats.co2} icon={Droplets} />
                   <StatBar label="Chill Factor" value={stats.chill} icon={Thermometer} />
                   <StatBar label="Energy Level" value={stats.energy} icon={Zap} />
                 </motion.div>
@@ -224,11 +262,11 @@ export default function ViewerClient() {
 
             <GlassCard className="p-6 rounded-2xl!">
               <div className="font-technical-label text-technical-label text-tertiary uppercase mb-4 tracking-widest">
-                DIMENSION TELEMETRY
+                WORLD LIVE STATS
               </div>
               <div className="space-y-3">
                 {[
-                  { label: "DIMENSION ID", value: `DIM-${stats.dimension}`, cls: "text-on-surface" },
+                  { label: "WORLD ID", value: `DIM-${stats.dimension}`, cls: "text-on-surface" },
                   { label: "STATUS", value: "ACTIVE", cls: "text-tertiary" },
                   { label: "CATEGORY", value: current.category, cls: "text-on-surface" },
                   { label: "SYNC", value: "99.98%", cls: "text-green-400" },

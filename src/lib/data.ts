@@ -1,7 +1,7 @@
 export type FlavorCollection = {
   id: string;
   name: string;
-  category: "CORE FLAVORS" | "LIMITED DIMENSIONS" | "ENERGY LEVELS";
+  category: "CORE FLAVORS" | "SPECIAL EDITIONS" | "ENERGY LEVELS";
   profile: string;
   description?: string;
   image: string;
@@ -15,7 +15,7 @@ export const collectionsData: FlavorCollection[] = [
     name: "ORIGINAL",
     category: "CORE FLAVORS",
     profile: "CL-01",
-    description: "The genesis dimension. A perfectly balanced harmonic of cola nut and citrus, refined across countless temporal shifts.",
+    description: "The first world. A perfect mix of cola and citrus that everyone loves.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuANYVPZSPHHD2_KBqCqKC2gUEkhaRnntUApxVnCn9yuVW8rq1BWh57V9EFH4UKQZW7odVYsOXjI6WBF_TR_W814GnJP-9Wy5bX23tq5FacU_ta8eT7ApqvIsI55xJIJmtUPvjCk9xHjV-VU_iAWEH6Mm6ye3PD3Gk-All1Ez21yAfSJh_7AAssotrWJfGdFSsY35CSyKS5tITuHKsfqMWDgT2HU6ejKQKai2IewzUme_xcbwaog1Olo7PLvEinA6EZThIWrlqCUgOq6",
     color: "primary",
     colSpan: 8,
@@ -34,7 +34,7 @@ export const collectionsData: FlavorCollection[] = [
     name: "WILD CHERRY",
     category: "CORE FLAVORS",
     profile: "CH-44",
-    description: "Explosive crimson energy surges through this high-intensity dimension.",
+    description: "Super fun cherry flavor with a bright red blast!",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCGvnjcap5__J6TwQRHCZkN4emv78iDhlKgCNUYRDEKCjx_GB7cz3KiXNs0kRU-J2z51DVbheESieQYUXqFtS3ASqU-SVOAYfEIRU84M2_URmoudRQw20spzoygAfXgV3TA8qxeZBzFwfEIQhQnGO1VjpFWJh5yKw59uFNWYVy-hNE-OwymnqqmeSlGbiwArmYFvir6ABY5GKkxzjZeJZiqgRogW6U7-OdAmCDPE6peK0kQ9xhZum9r0MIYV7EeKCSH7yKvfdWF-u-K",
     color: "secondary",
     colSpan: 4,
@@ -42,7 +42,7 @@ export const collectionsData: FlavorCollection[] = [
   {
     id: "electric-limited",
     name: "ELECTRIC EDITION",
-    category: "LIMITED DIMENSIONS",
+    category: "SPECIAL EDITIONS",
     profile: "VOLTAGE: 9000.E",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8TSlL2vajLLW8dl0INXreI4Llg3Ni70rFC6mwlaxvShenRRFQZt8Sfj7Zbu4ov92EUdznOGpteYTdrVp1P5-Pav629C8b7lSks7JfxAgvSHQDpbgtRu2Ng3657w1TOoZsrr2hoghSfssJoMiqGdpXHj61v7RoQjC56sCFc3t0ofrdhef34KRazOUKyTKIv2ji9tSbFerNI4pzsNk4qNHGaybhBcrhaWKNgQi221NQKs38qQ_hDryGxa9JEKeDtFNazQ3VoWdqAMh1",
     color: "tertiary",

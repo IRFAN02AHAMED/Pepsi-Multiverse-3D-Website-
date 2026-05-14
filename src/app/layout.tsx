@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SyncTransition } from "@/components/SyncTransition";
 
 const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
@@ -44,6 +45,7 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
+        <SyncTransition />
         <SmoothScroll>
           <Navbar />
           {children}

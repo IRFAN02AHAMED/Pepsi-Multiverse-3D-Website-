@@ -10,17 +10,17 @@ import { Canvas } from "@react-three/fiber";
 import { PepsiScene } from "@/components/PepsiCan3D";
 
 const filters = [
-  "ALL DIMENSIONS",
+  "ALL WORLDS",
   "CORE FLAVORS",
-  "LIMITED DIMENSIONS",
+  "SPECIAL EDITIONS",
   "ENERGY LEVELS",
 ];
 
 export default function CollectionsPage() {
-  const [activeFilter, setActiveFilter] = useState("ALL DIMENSIONS");
+  const [activeFilter, setActiveFilter] = useState("ALL WORLDS");
 
   const filteredData = collectionsData.filter((item) =>
-    activeFilter === "ALL DIMENSIONS" ? true : item.category === activeFilter
+    activeFilter === "ALL WORLDS" ? true : item.category === activeFilter
   );
 
   return (
@@ -136,7 +136,7 @@ export default function CollectionsPage() {
                         </span>
                         {item.id === "electric-limited" && (
                           <span className="font-technical-label text-[10px] px-2 py-0.5 rounded bg-tertiary/20 text-tertiary uppercase tracking-widest border border-tertiary/30 animate-pulse">
-                            Limited Dimension
+                            Special Edition
                           </span>
                         )}
                       </div>
@@ -157,7 +157,7 @@ export default function CollectionsPage() {
 
                       <div className="pt-4">
                         <div className="inline-flex items-center gap-2 text-white bg-white/5 border border-white/10 px-5 py-2 rounded-full font-technical-label text-[10px] tracking-[0.2em] group-hover:bg-white group-hover:text-black transition-all duration-500">
-                          INFILTRATE <ArrowRight size={14} />
+                          EXPLORE <ArrowRight size={14} />
                         </div>
                       </div>
                     </div>
@@ -166,25 +166,6 @@ export default function CollectionsPage() {
               </motion.div>
             ))}
 
-            {/* Call to Action Card */}
-            <motion.div
-              layout
-              className="md:col-span-4 group relative overflow-hidden rounded-2xl border border-dashed border-white/10 bg-white/[0.02] flex items-center justify-center cursor-pointer hover:bg-white/[0.05] transition-all min-h-[400px]"
-            >
-              <div className="text-center flex flex-col items-center gap-4">
-                <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <PlusCircle className="text-outline" size={32} />
-                </div>
-                <div className="space-y-1">
-                  <p className="font-technical-label text-[12px] text-on-surface uppercase tracking-widest">
-                    SYNC NEW DIMENSIONS
-                  </p>
-                  <p className="text-[10px] text-outline uppercase tracking-wider">
-                    Expansion Protocol Pending
-                  </p>
-                </div>
-              </div>
-            </motion.div>
           </AnimatePresence>
         </motion.div>
 
@@ -202,15 +183,20 @@ export default function CollectionsPage() {
             
             <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-12">
               {[
-                { label: "Active Users", value: "2.4M", icon: Activity },
-                { label: "Sync Rate", value: "99.9%", icon: Droplets },
-                { label: "Load State", value: "Optimal", icon: Activity },
-                { label: "Telemetry", value: "0.02ms", icon: Droplets },
+                { label: "Active Users", value: "2.4M", desc: "Concurrent dimension travelers", icon: Activity },
+                { label: "Sync Rate", value: "99.9%", desc: "Cross-reality rendering stability", icon: Droplets },
+                { label: "Load State", value: "Optimal", desc: "No dimensional instability detected", icon: Activity },
+                { label: "Telemetry", value: "0.02ms", desc: "Latency between taste nodes", icon: Droplets },
               ].map((stat) => (
-                <div key={stat.label} className="space-y-3">
-                  <span className="font-technical-label text-[10px] text-outline uppercase tracking-[0.2em] block">
-                    {stat.label}
-                  </span>
+                <div key={stat.label} className="space-y-3 group cursor-help">
+                  <div className="flex flex-col">
+                    <span className="font-technical-label text-[10px] text-outline uppercase tracking-[0.2em]">
+                      {stat.label}
+                    </span>
+                    <span className="text-[9px] text-tertiary/60 uppercase tracking-widest h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-300">
+                      {stat.desc}
+                    </span>
+                  </div>
                   <div className="flex items-end gap-2">
                     <span className="text-2xl font-bold tracking-tight">{stat.value}</span>
                     <stat.icon size={14} className="text-tertiary mb-1" />

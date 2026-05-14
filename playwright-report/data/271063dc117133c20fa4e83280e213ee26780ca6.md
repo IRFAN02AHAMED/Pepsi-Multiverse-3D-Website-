@@ -57,62 +57,60 @@ Call log:
             - generic: Synchronization
             - generic: 99.98%
       - generic [ref=e27]:
-        - link "INITIATE SYNC" [ref=e28] [cursor=pointer]:
-          - /url: /cta
-          - button "INITIATE SYNC" [ref=e29]:
-            - text: INITIATE SYNC
-            - img [ref=e30]
-        - link "VIEW ARCHIVES" [ref=e33] [cursor=pointer]:
+        - button "INITIATE SYNC" [ref=e28]:
+          - text: INITIATE SYNC
+          - img [ref=e29]
+        - link "VIEW ARCHIVES" [ref=e32] [cursor=pointer]:
           - /url: /collections
           - text: VIEW ARCHIVES
-          - img [ref=e34]
-    - generic [ref=e38]:
-      - link "THE MULTIVERSE STORY Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node." [ref=e39] [cursor=pointer]:
+          - img [ref=e33]
+    - generic [ref=e37]:
+      - link "THE MULTIVERSE STORY Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node." [ref=e38] [cursor=pointer]:
         - /url: /story
-        - generic [ref=e40]:
-          - img [ref=e42]
-          - generic [ref=e45]:
-            - heading "THE MULTIVERSE STORY" [level=3] [ref=e46]
-            - paragraph [ref=e47]: Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.
-      - generic [ref=e48]:
-        - img [ref=e50]
-        - generic [ref=e56]:
-          - generic [ref=e57]: System Status
+        - generic [ref=e39]:
+          - img [ref=e41]
+          - generic [ref=e44]:
+            - heading "THE MULTIVERSE STORY" [level=3] [ref=e45]
+            - paragraph [ref=e46]: Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.
+      - generic [ref=e47]:
+        - img [ref=e49]
+        - generic [ref=e55]:
+          - generic [ref=e56]: System Status
+          - paragraph [ref=e57]: Current state of the multiverse environment
           - heading "CORE SYNC OPTIMAL" [level=3] [ref=e58]:
             - text: CORE SYNC
             - text: OPTIMAL
-      - generic [ref=e59]:
-        - generic [ref=e60]: Active Particles
-        - generic [ref=e61]:
-          - generic [ref=e63]:
-            - generic [ref=e64]: OAK_SMOKE
-            - generic [ref=e65]: 12%
-          - generic [ref=e68]:
-            - generic [ref=e69]: CITRUS_GLITCH
-            - generic [ref=e70]: 84%
-          - generic [ref=e73]:
-            - generic [ref=e74]: VANILLA_STREAM
-            - generic [ref=e75]: 04%
-      - link "CHROME COLLECTION Limited edition skins for your dimensional interface. Available for immediate synchronization." [ref=e77] [cursor=pointer]:
+          - paragraph [ref=e59]: "Flavor dimension stability: 100%"
+      - generic [ref=e60]:
+        - generic [ref=e61]: Active Particles
+        - generic [ref=e62]:
+          - generic [ref=e64]:
+            - generic [ref=e65]: OAK_SMOKE
+            - generic [ref=e66]: 12%
+          - generic [ref=e69]:
+            - generic [ref=e70]: CITRUS_GLITCH
+            - generic [ref=e71]: 84%
+          - generic [ref=e74]:
+            - generic [ref=e75]: VANILLA_STREAM
+            - generic [ref=e76]: 04%
+      - link "CHROME COLLECTION Limited edition skins for your dimensional interface. Available for immediate synchronization." [ref=e78] [cursor=pointer]:
         - /url: /collections
-        - generic [ref=e78]:
-          - generic [ref=e79]:
-            - heading "CHROME COLLECTION" [level=3] [ref=e80]
-            - paragraph [ref=e81]: Limited edition skins for your dimensional interface. Available for immediate synchronization.
-          - img [ref=e83]
-  - contentinfo [ref=e86]:
-    - generic [ref=e87]: Pepsi Multiverse
-    - generic [ref=e88]:
-      - link "Privacy Protocol" [ref=e89] [cursor=pointer]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - heading "CHROME COLLECTION" [level=3] [ref=e81]
+            - paragraph [ref=e82]: Limited edition skins for your dimensional interface. Available for immediate synchronization.
+          - img [ref=e84]
+  - contentinfo [ref=e87]:
+    - generic [ref=e88]: Pepsi Multiverse
+    - generic [ref=e89]:
+      - link "Privacy Protocol" [ref=e90] [cursor=pointer]:
         - /url: "#"
-      - link "Terms of Service" [ref=e90] [cursor=pointer]:
+      - link "Terms of Service" [ref=e91] [cursor=pointer]:
         - /url: "#"
-      - link "Contact HQ" [ref=e91] [cursor=pointer]:
+      - link "Contact HQ" [ref=e92] [cursor=pointer]:
         - /url: "#"
-    - generic [ref=e93]: © 2024 Pepsi Multiverse. All Dimensions Reserved.
-  - button "Open Next.js Dev Tools" [ref=e99] [cursor=pointer]:
-    - img [ref=e100]
-  - alert [ref=e103]
+    - generic [ref=e94]: © 2024 Pepsi Multiverse. All Dimensions Reserved.
+  - alert [ref=e99]
 ```
 
 # Test source
@@ -144,7 +142,7 @@ Call log:
   24 |     await expect(page).toHaveURL('/collections');
   25 |     
   26 |     // Check for collection header
-  27 |     await expect(page.locator('h1')).toContainText('Flavor Collections');
+  27 |     await expect(page.locator('h1')).toContainText('FLAVOR COLLECTIONS');
   28 |     
   29 |     // Check filtering
   30 |     const filterBtn = page.getByRole('button', { name: 'CORE FLAVORS' });

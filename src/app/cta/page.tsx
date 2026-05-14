@@ -97,25 +97,23 @@ export default function CTAPage() {
           <div className="lg:sticky lg:top-32 space-y-8">
             <div>
               <span className="font-technical-label text-technical-label text-tertiary uppercase tracking-[0.3em] block mb-4">
-                MULTIVERSE SYNC PROTOCOL
+                CHOOSE YOUR WORLD
               </span>
               <h1 className="font-headline-lg text-headline-lg leading-none">
-                INITIATE<br />YOUR SYNC
+                GET YOUR<br />DRINK
               </h1>
             </div>
             <p className="font-body-md text-body-md text-on-surface-variant">
-              Reserve your portal to the next dimension. Select your preferred
-              flavor vector and configure your shipment parameters. A Multiverse
-              operative will confirm your order within 0.02ms.
+              Pick your favorite flavor and how many you want. We'll get it ready to send straight to you!
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { label: "Dimensions Active", value: "10" },
-                { label: "Sync Rate", value: "99.98%" },
-                { label: "Delivery Speed", value: "0.02ms" },
-                { label: "Satisfaction", value: "100%" },
+                { label: "Worlds Active", value: "10" },
+                { label: "Success Rate", value: "99.98%" },
+                { label: "Delivery Speed", value: "Super Fast" },
+                { label: "Happiness", value: "100%" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -156,11 +154,10 @@ export default function CTAPage() {
                 >
                   <CheckCircle className="text-tertiary w-20 h-20" />
                   <h2 className="font-headline-lg text-headline-lg text-white">
-                    SYNC CONFIRMED
+                    ORDER CONFIRMED
                   </h2>
                   <p className="font-body-md text-body-md text-on-surface-variant max-w-sm">
-                    Your dimension has been locked in. A multiverse operative
-                    will reach out to your email shortly.
+                    Your flavor world is locked in. We'll email you soon!
                   </p>
                   <div className="glass-panel rim-light rounded-xl p-4 border border-white/10 w-full max-w-xs">
                     <span className="font-technical-label text-technical-label text-outline block">
@@ -207,13 +204,13 @@ export default function CTAPage() {
                     </InputField>
                   </div>
 
-                  <InputField label="Select Dimension" error={errors.dimension?.message}>
+                  <InputField label="Select Flavor World" error={errors.dimension?.message}>
                     <select
                       {...register("dimension")}
                       id="field-dimension"
                       className={cn(inputBase, "appearance-none cursor-pointer", errors.dimension && "border-error")}
                     >
-                      <option value="">— Choose your dimension —</option>
+                      <option value="">— Choose your flavor world —</option>
                       {collectionsData.map((c) => (
                         <option key={c.id} value={c.id} className="bg-surface-container">
                           {c.name} — {c.category}
@@ -251,32 +248,40 @@ export default function CTAPage() {
                       className="w-4 h-4 accent-[#00d9ff] rounded"
                     />
                     <span className="font-technical-label text-technical-label text-on-surface-variant group-hover:text-on-surface transition-colors">
-                      Subscribe to interdimensional updates & new flavor alerts
+                      Subscribe to updates & new flavor alerts
                     </span>
                   </label>
 
-                  <button
-                    type="submit"
-                    id="submit-btn"
-                    disabled={loading}
-                    className="w-full liquid-metallic-gradient text-on-primary font-nav-item text-nav-item py-4 rounded-full flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all neon-glow disabled:opacity-70 disabled:scale-100"
-                  >
-                    {loading ? (
-                      <>
-                        <Loader2 className="animate-spin" size={20} />
-                        SYNCING...
-                      </>
-                    ) : (
-                      <>
-                        <Zap size={20} />
-                        INITIATE SYNC
-                        <ArrowRight size={20} />
-                      </>
+                  <div className="space-y-2">
+                    <button
+                      type="submit"
+                      id="submit-btn"
+                      disabled={loading}
+                      className="w-full liquid-metallic-gradient text-on-primary font-nav-item text-nav-item py-4 rounded-full flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all neon-glow disabled:opacity-70 disabled:scale-100"
+                    >
+                      {loading ? (
+                        <>
+                          <Loader2 className="animate-spin" size={20} />
+                          LOADING...
+                        </>
+                      ) : (
+                        <>
+                          <Zap size={20} />
+                          GET IT NOW
+                          <ArrowRight size={20} />
+                        </>
+                      )}
+                    </button>
+                    {!loading && (
+                      <div className="text-center">
+                        <span className="font-technical-label text-[10px] text-tertiary/60 uppercase tracking-widest">
+                          Starts immersive 3D experience
+                        </span>
+                      </div>
                     )}
-                  </button>
-
-                  <p className="font-technical-label text-technical-label text-outline text-center">
-                    All dimensions are secured and protected.
+                  </div>
+                  <p className="font-technical-label text-technical-label text-outline text-center mt-6">
+                    All worlds are secured and protected.
                   </p>
                 </motion.form>
               )}

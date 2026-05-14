@@ -3,12 +3,22 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { GlassCard } from "@/components/GlassCard";
-import { Bolt, Activity, ArrowUpRight, Sparkles } from "lucide-react";
+import { Bolt, Activity, ArrowUpRight, Sparkles, ArrowRight } from "lucide-react";
 import { Canvas } from "@react-three/fiber";
 import { PepsiScene } from "@/components/PepsiCan3D";
 import { OrbitControls } from "@react-three/drei";
+import { useFlavorStore } from "@/store/useFlavorStore";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const { startSync } = useFlavorStore();
+  const router = useRouter();
+
+  const handleSync = () => {
+    startSync(() => {
+      router.push("/viewer");
+    });
+  };
   return (
     <main className="relative min-h-screen w-full flex flex-col items-center overflow-hidden pt-20 bg-[#0a0c10]">
       {/* Premium Subtle Background */}
@@ -53,11 +63,11 @@ export default function Home() {
           {/* Subtle HUD hints */}
           <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-12 opacity-30">
             <div className="flex flex-col gap-1 items-start">
-              <span className="font-technical-label text-[10px] text-outline uppercase">Molecular State</span>
-              <span className="font-technical-label text-sm text-white">STABLE</span>
+              <span className="font-technical-label text-[10px] text-outline uppercase">Taste Profile</span>
+              <span className="font-technical-label text-sm text-white">PERFECT</span>
             </div>
             <div className="flex flex-col gap-1 items-end">
-              <span className="font-technical-label text-[10px] text-outline uppercase">Synchronization</span>
+              <span className="font-technical-label text-[10px] text-outline uppercase">Loading Progress</span>
               <span className="font-technical-label text-sm text-tertiary">99.98%</span>
             </div>
           </div>
@@ -70,12 +80,12 @@ export default function Home() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="mt-12 flex flex-col md:flex-row gap-8 items-center"
         >
-          <Link href="/cta">
-            <button className="liquid-metallic-gradient text-on-primary font-nav-item text-nav-item px-14 py-5 rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 transition-all duration-300 neon-glow group shadow-xl">
-              INITIATE SYNC
-              <Bolt className="transition-transform group-hover:rotate-12" size={18} />
-            </button>
-          </Link>
+          <button 
+            onClick={handleSync}
+            className="liquid-metallic-gradient text-on-primary font-nav-item text-nav-item px-10 py-4 rounded-full hover:scale-105 transition-all neon-glow flex items-center gap-2"
+          >
+            Explore Pepsi Universe <ArrowRight size={18} />
+          </button>
           <Link href="/collections" className="font-nav-item text-nav-item text-on-surface-variant hover:text-white transition-colors flex items-center gap-2 group border-b border-white/10 pb-1">
             VIEW ARCHIVES
             <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" size={16} />
@@ -94,50 +104,78 @@ export default function Home() {
               </div>
               <div className="relative z-10">
                 <h3 className="font-headline-lg text-headline-lg text-white mb-3">
-                  THE MULTIVERSE STORY
+                  THE PEPSI UNIVERSE
                 </h3>
                 <p className="font-body-md text-on-surface-variant max-w-lg leading-relaxed">
-                  Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.
+                  Go beyond the fizz. Explore how we made the coolest drink across the whole universe just for you.
                 </p>
               </div>
             </GlassCard>
           </Link>
 
           {/* Live Telemetry Card */}
-          <div className="md:col-span-4 glass-panel rim-light rounded-[32px] p-10 flex flex-col justify-between border border-white/5 bg-surface-container-low/40">
+          <div className="md:col-span-4 glass-panel rim-light rounded-[32px] p-10 flex flex-col justify-between border border-white/5 bg-surface-container-low/40 group relative overflow-hidden cursor-help">
             <div className="flex justify-between items-center">
-              <Activity className="text-tertiary w-8 h-8" />
+              <Activity className="text-tertiary w-8 h-8 group-hover:scale-110 transition-transform duration-500" />
               <div className="flex gap-1">
                 {[1, 2, 3].map((i) => (
                   <motion.div
                     key={i}
                     animate={{ height: [12, 24, 12] }}
                     transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-                    className="w-1.5 bg-tertiary/60 rounded-full"
+                    className="w-1.5 bg-tertiary/60 rounded-full group-hover:bg-tertiary transition-colors duration-500"
                   />
                 ))}
               </div>
             </div>
-            <div>
-              <span className="font-technical-label text-outline uppercase block mb-1">System Status</span>
-              <h3 className="font-headline-lg text-[32px] text-white leading-none">
-                CORE SYNC<br />OPTIMAL
+            <div className="relative z-10 transition-transform duration-500 group-hover:-translate-y-4">
+              <span className="font-technical-label text-outline uppercase block mb-1 group-hover:text-tertiary transition-colors duration-500">
+                Live Stats
+              </span>
+              <p className="text-[10px] text-tertiary/60 uppercase tracking-widest mb-3 leading-tight group-hover:opacity-0 transition-opacity duration-300">
+                How our universe is doing right now
+              </p>
+              <h3 className="font-headline-lg text-[32px] text-white leading-none group-hover:opacity-0 transition-opacity duration-300">
+                CONNECTION<br />PERFECT
               </h3>
+              <p className="text-[10px] text-tertiary/60 uppercase tracking-widest mt-2 leading-tight group-hover:opacity-0 transition-opacity duration-300">
+                World stability: 100%
+              </p>
+            </div>
+
+            {/* Hover Explainer Tooltip */}
+            <div className="absolute bottom-8 left-10 right-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none flex flex-col gap-3">
+              <div className="space-y-1">
+                <div className="font-technical-label text-[10px] text-tertiary uppercase tracking-widest">
+                  CONNECTION
+                </div>
+                <p className="text-[11px] text-on-surface-variant leading-tight">
+                  How well our different worlds are talking to each other.
+                </p>
+              </div>
+              <div className="space-y-1">
+                <div className="font-technical-label text-[10px] text-green-400 uppercase tracking-widest">
+                  PERFECT
+                </div>
+                <p className="text-[11px] text-on-surface-variant leading-tight">
+                  Everything is running smoothly with no glitches!
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Flavor Profile Stats */}
-          <GlassCard className="md:col-span-4 p-8 flex flex-col justify-between h-full border-white/5">
-            <div className="font-technical-label text-outline uppercase tracking-widest">
-              Active Particles
+          <GlassCard className="md:col-span-12 p-8 flex flex-col justify-between h-full border-white/5">
+            <div className="font-technical-label text-outline uppercase tracking-widest mb-4">
+              Active Flavors
             </div>
-            <div className="space-y-4">
+            <div className="flex flex-col md:flex-row gap-8 justify-between w-full">
               {[
-                { label: "OAK_SMOKE", val: "12%" },
-                { label: "CITRUS_GLITCH", val: "84%" },
-                { label: "VANILLA_STREAM", val: "04%" }
+                { label: "SMOKEY", val: "12%" },
+                { label: "CITRUS", val: "84%" },
+                { label: "VANILLA", val: "04%" }
               ].map((item) => (
-                <div key={item.label} className="group cursor-default">
+                <div key={item.label} className="group cursor-default flex-1">
                   <div className="flex justify-between text-[10px] font-technical-label text-outline mb-1 uppercase">
                     <span>{item.label}</span>
                     <span className="text-tertiary">{item.val}</span>
@@ -154,23 +192,6 @@ export default function Home() {
               ))}
             </div>
           </GlassCard>
-
-          {/* Chrome Collection Card */}
-          <Link href="/collections" className="md:col-span-8 block h-full">
-            <GlassCard className="h-full group flex items-center justify-between p-12 border-white/5 transition-all duration-500 hover:bg-white/[0.05]">
-              <div className="max-w-md">
-                <h3 className="font-headline-lg text-headline-lg text-white mb-2 leading-none">
-                  CHROME COLLECTION
-                </h3>
-                <p className="font-body-md text-on-surface-variant">
-                  Limited edition skins for your dimensional interface. Available for immediate synchronization.
-                </p>
-              </div>
-              <div className="p-6 rounded-full bg-white/5 border border-white/10 group-hover:bg-tertiary/10 group-hover:border-tertiary/30 transition-all">
-                <ArrowUpRight className="text-white group-hover:text-tertiary transition-colors" size={32} />
-              </div>
-            </GlassCard>
-          </Link>
         </div>
       </section>
 

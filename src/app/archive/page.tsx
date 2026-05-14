@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
 import { ChevronRight, PlusCircle } from "lucide-react";
 import Link from "next/link";
 
-const filters = ["ALL DIMENSIONS", "CORE FLAVORS", "LIMITED DIMENSIONS", "ENERGY LEVELS"];
+const filters = ["ALL WORLDS", "CORE FLAVORS", "SPECIAL EDITIONS", "ENERGY LEVELS"];
 
 export default function ArchivePage() {
-  const [activeFilter, setActiveFilter] = useState("ALL DIMENSIONS");
+  const [activeFilter, setActiveFilter] = useState("ALL WORLDS");
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const filteredData = collectionsData.filter((item) =>
-    activeFilter === "ALL DIMENSIONS" ? true : item.category === activeFilter
+    activeFilter === "ALL WORLDS" ? true : item.category === activeFilter
   );
 
   return (
@@ -67,7 +67,7 @@ export default function ArchivePage() {
         <div className="glass-panel rim-light rounded-2xl overflow-hidden border border-white/10">
           {/* Table Header */}
           <div className="grid grid-cols-12 gap-4 px-8 py-4 bg-surface-container border-b border-white/10">
-            <div className="col-span-1 font-technical-label text-technical-label text-outline uppercase">DIM</div>
+            <div className="col-span-1 font-technical-label text-technical-label text-outline uppercase">ID</div>
             <div className="col-span-3 font-technical-label text-technical-label text-outline uppercase">Flavor</div>
             <div className="col-span-3 font-technical-label text-technical-label text-outline uppercase hidden md:block">Category</div>
             <div className="col-span-2 font-technical-label text-technical-label text-outline uppercase hidden lg:block">Profile</div>
@@ -141,7 +141,7 @@ export default function ArchivePage() {
                         />
                         <div className="flex-1 space-y-3">
                           <p className="font-body-md text-body-md text-on-surface-variant">
-                            {item.description ?? `${item.name} — a multidimensional flavor experience calibrated for maximum refreshment. Molecular profile ${item.profile} is currently active.`}
+                            {item.description ?? `${item.name} — a super awesome flavor made just for you. Taste profile ${item.profile} is ready to drink.`}
                           </p>
                           <div className="flex gap-4 flex-wrap">
                             <span className="font-technical-label text-technical-label text-outline">
@@ -165,13 +165,7 @@ export default function ArchivePage() {
             ))}
           </AnimatePresence>
 
-          {/* Add New */}
-          <div className="px-8 py-5 flex items-center gap-4 hover:bg-white/[0.02] transition-colors cursor-pointer">
-            <PlusCircle size={20} className="text-outline" />
-            <span className="font-technical-label text-technical-label text-outline uppercase tracking-wider">
-              Synchronize New Dimensions
-            </span>
-          </div>
+
         </div>
       </div>
     </main>

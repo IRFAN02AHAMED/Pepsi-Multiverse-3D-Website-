@@ -44,9 +44,7 @@ Call log:
   - text: Dimension 001 // Core Sync
   - heading "REFRESH REALITY" [level=1]
   - text: Molecular State STABLE Synchronization 99.98%
-  - link "INITIATE SYNC":
-    - /url: /cta
-    - button "INITIATE SYNC"
+  - button "INITIATE SYNC"
   - link "VIEW ARCHIVES":
     - /url: /collections
   - link "THE MULTIVERSE STORY Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.":
@@ -54,7 +52,9 @@ Call log:
     - heading "THE MULTIVERSE STORY" [level=3]
     - paragraph: Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.
   - text: System Status
+  - paragraph: Current state of the multiverse environment
   - heading "CORE SYNC OPTIMAL" [level=3]
+  - paragraph: "Flavor dimension stability: 100%"
   - text: Active Particles OAK_SMOKE 12% CITRUS_GLITCH 84% VANILLA_STREAM 04%
   - link "CHROME COLLECTION Limited edition skins for your dimensional interface. Available for immediate synchronization.":
     - /url: /collections
@@ -102,7 +102,7 @@ Call log:
   24 |     await expect(page).toHaveURL('/collections');
   25 |     
   26 |     // Check for collection header
-  27 |     await expect(page.locator('h1')).toContainText('Flavor Collections');
+  27 |     await expect(page.locator('h1')).toContainText('FLAVOR COLLECTIONS');
   28 |     
   29 |     // Check filtering
   30 |     const filterBtn = page.getByRole('button', { name: 'CORE FLAVORS' });

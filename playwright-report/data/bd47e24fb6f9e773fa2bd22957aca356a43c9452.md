@@ -150,53 +150,54 @@ Call log:
             - generic [ref=e184]:
               - text: INFILTRATE
               - img [ref=e185]
-        - generic [ref=e188] [cursor=pointer]:
-          - img [ref=e190]
-          - generic [ref=e192]:
-            - paragraph [ref=e193]: SYNC NEW DIMENSIONS
-            - paragraph [ref=e194]: Expansion Protocol Pending
-      - generic [ref=e196]:
-        - generic [ref=e197]:
-          - heading "MULTIVERSE STATUS" [level=2] [ref=e198]:
+      - generic [ref=e188]:
+        - generic [ref=e189]:
+          - heading "MULTIVERSE STATUS" [level=2] [ref=e190]:
             - text: MULTIVERSE
             - text: STATUS
-          - paragraph [ref=e199]: Real-time telemetry across core dimensions. System stability maintained at peak sync rate.
-        - generic [ref=e200]:
-          - generic [ref=e201]:
-            - generic [ref=e202]: Active Users
+          - paragraph [ref=e191]: Real-time telemetry across core dimensions. System stability maintained at peak sync rate.
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - generic [ref=e194]:
+              - generic [ref=e195]: Active Users
+              - generic: Concurrent dimension travelers
+            - generic [ref=e196]:
+              - generic [ref=e197]: 2.4M
+              - img [ref=e198]
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - generic [ref=e202]: Sync Rate
+              - generic: Cross-reality rendering stability
             - generic [ref=e203]:
-              - generic [ref=e204]: 2.4M
+              - generic [ref=e204]: 99.9%
               - img [ref=e205]
-          - generic [ref=e207]:
-            - generic [ref=e208]: Sync Rate
+          - generic [ref=e208]:
             - generic [ref=e209]:
-              - generic [ref=e210]: 99.9%
-              - img [ref=e211]
-          - generic [ref=e214]:
-            - generic [ref=e215]: Load State
+              - generic [ref=e210]: Load State
+              - generic: No dimensional instability detected
+            - generic [ref=e211]:
+              - generic [ref=e212]: Optimal
+              - img [ref=e213]
+          - generic [ref=e215]:
             - generic [ref=e216]:
-              - generic [ref=e217]: Optimal
-              - img [ref=e218]
-          - generic [ref=e220]:
-            - generic [ref=e221]: Telemetry
-            - generic [ref=e222]:
-              - generic [ref=e223]: 0.02ms
-              - img [ref=e224]
+              - generic [ref=e217]: Telemetry
+              - generic: Latency between taste nodes
+            - generic [ref=e218]:
+              - generic [ref=e219]: 0.02ms
+              - img [ref=e220]
     - generic:
       - generic: Core System Online
-  - contentinfo [ref=e227]:
-    - generic [ref=e228]: Pepsi Multiverse
-    - generic [ref=e229]:
-      - link "Privacy Protocol" [ref=e230] [cursor=pointer]:
+  - contentinfo [ref=e223]:
+    - generic [ref=e224]: Pepsi Multiverse
+    - generic [ref=e225]:
+      - link "Privacy Protocol" [ref=e226] [cursor=pointer]:
         - /url: "#"
-      - link "Terms of Service" [ref=e231] [cursor=pointer]:
+      - link "Terms of Service" [ref=e227] [cursor=pointer]:
         - /url: "#"
-      - link "Contact HQ" [ref=e232] [cursor=pointer]:
+      - link "Contact HQ" [ref=e228] [cursor=pointer]:
         - /url: "#"
-    - generic [ref=e234]: © 2024 Pepsi Multiverse. All Dimensions Reserved.
-  - button "Open Next.js Dev Tools" [ref=e240] [cursor=pointer]:
-    - img [ref=e241]
-  - alert [ref=e244]
+    - generic [ref=e230]: © 2024 Pepsi Multiverse. All Dimensions Reserved.
+  - alert [ref=e235]
 ```
 
 # Test source
@@ -228,7 +229,7 @@ Call log:
   24 |     await expect(page).toHaveURL('/collections');
   25 |     
   26 |     // Check for collection header
-  27 |     await expect(page.locator('h1')).toContainText('Flavor Collections');
+  27 |     await expect(page.locator('h1')).toContainText('FLAVOR COLLECTIONS');
   28 |     
   29 |     // Check filtering
   30 |     const filterBtn = page.getByRole('button', { name: 'CORE FLAVORS' });

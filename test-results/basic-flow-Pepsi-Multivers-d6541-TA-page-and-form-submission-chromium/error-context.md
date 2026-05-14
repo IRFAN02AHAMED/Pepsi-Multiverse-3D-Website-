@@ -6,21 +6,22 @@
 
 # Test info
 
-- Name: basic-flow.spec.ts >> Pepsi Multiverse E2E Flow >> navigation to collections and filtering
-- Location: tests\basic-flow.spec.ts:19:7
+- Name: basic-flow.spec.ts >> Pepsi Multiverse E2E Flow >> navigation to CTA page and form submission
+- Location: tests\basic-flow.spec.ts:56:7
 
 # Error details
 
 ```
 Error: expect(page).toHaveURL(expected) failed
 
-Expected: "http://localhost:3000/collections"
-Received: "http://localhost:3000/"
+Expected: "http://localhost:3000/cta"
+Received: "http://localhost:3000/viewer"
 Timeout:  5000ms
 
 Call log:
   - Expect "toHaveURL" with timeout 5000ms
-    8 × unexpected value "http://localhost:3000/"
+    10 × unexpected value "http://localhost:3000/"
+    3 × unexpected value "http://localhost:3000/viewer"
 
 ```
 
@@ -40,25 +41,57 @@ Call log:
     - /url: /collections
     - button "Explore"
 - main:
-  - text: Dimension 001 // Core Sync
-  - heading "REFRESH REALITY" [level=1]
-  - text: Molecular State STABLE Synchronization 99.98%
-  - link "INITIATE SYNC":
-    - /url: /cta
-    - button "INITIATE SYNC"
-  - link "VIEW ARCHIVES":
-    - /url: /collections
-  - link "THE MULTIVERSE STORY Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.":
-    - /url: /story
-    - heading "THE MULTIVERSE STORY" [level=3]
-    - paragraph: Go beyond the fizz. Explore how we re-engineered hydration across temporal dimensions to create the ultimate sensory node.
-  - text: System Status
-  - heading "CORE SYNC OPTIMAL" [level=3]
-  - text: Active Particles OAK_SMOKE 12% CITRUS_GLITCH 84% VANILLA_STREAM 04%
-  - link "CHROME COLLECTION Limited edition skins for your dimensional interface. Available for immediate synchronization.":
-    - /url: /collections
-    - heading "CHROME COLLECTION" [level=3]
-    - paragraph: Limited edition skins for your dimensional interface. Available for immediate synchronization.
+  - text: 360° FLAVOR INTERFACE // DIMENSION 001
+  - heading "MULTIVERSE VIEWER" [level=1]
+  - button "ORIGINAL ORIGINAL DIM-001":
+    - img "ORIGINAL"
+    - paragraph: ORIGINAL
+    - paragraph: DIM-001
+  - button "ZERO SUGAR ZERO SUGAR DIM-002":
+    - img "ZERO SUGAR"
+    - paragraph: ZERO SUGAR
+    - paragraph: DIM-002
+  - button "WILD CHERRY WILD CHERRY DIM-003":
+    - img "WILD CHERRY"
+    - paragraph: WILD CHERRY
+    - paragraph: DIM-003
+  - button "ELECTRIC EDITION ELECTRIC EDITION DIM-004":
+    - img "ELECTRIC EDITION"
+    - paragraph: ELECTRIC EDITION
+    - paragraph: DIM-004
+  - button "LIME LIME DIM-005":
+    - img "LIME"
+    - paragraph: LIME
+    - paragraph: DIM-005
+  - button "MANGO MANGO DIM-006":
+    - img "MANGO"
+    - paragraph: MANGO
+    - paragraph: DIM-006
+  - button "BLUE BLUE DIM-007":
+    - img "BLUE"
+    - paragraph: BLUE
+    - paragraph: DIM-007
+  - button "NITRO NITRO DIM-008":
+    - img "NITRO"
+    - paragraph: NITRO
+    - paragraph: DIM-008
+  - button "VANILLA VANILLA DIM-009":
+    - img "VANILLA"
+    - paragraph: VANILLA
+    - paragraph: DIM-009
+  - button "MAX MAX DIM-010":
+    - img "MAX"
+    - paragraph: MAX
+    - paragraph: DIM-010
+  - button
+  - button
+  - text: 3D INTERACTIVE MODE
+  - button "SLOW ORBIT"
+  - button "TECHNICAL ANALYSIS"
+  - button "TRIGGER FIZZ"
+  - heading "ORIGINAL" [level=2]
+  - paragraph: "MOLECULAR PROFILE: 001"
+  - text: FLAVOR ANALYSIS CO₂ Saturation 100% Chill Factor 85% Energy Level 72% DIMENSION TELEMETRY DIMENSION ID DIM-001 STATUS ACTIVE CATEGORY CORE FLAVORS SYNC 99.98%
 - contentinfo:
   - text: Pepsi Multiverse
   - link "Privacy Protocol":
@@ -97,11 +130,10 @@ Call log:
   21 |     
   22 |     // Navigate to collections via bento grid (using the heading text)
   23 |     await page.getByText(/CHROME/i).first().click();
-> 24 |     await expect(page).toHaveURL('/collections');
-     |                        ^ Error: expect(page).toHaveURL(expected) failed
+  24 |     await expect(page).toHaveURL('/collections');
   25 |     
   26 |     // Check for collection header
-  27 |     await expect(page.locator('h1')).toContainText('Flavor Collections');
+  27 |     await expect(page.locator('h1')).toContainText('FLAVOR COLLECTIONS');
   28 |     
   29 |     // Check filtering
   30 |     const filterBtn = page.getByRole('button', { name: 'CORE FLAVORS' });
@@ -133,7 +165,8 @@ Call log:
   56 |   test('navigation to CTA page and form submission', async ({ page }) => {
   57 |     await page.goto('/');
   58 |     await page.getByRole('button', { name: /INITIATE SYNC/i }).first().click();
-  59 |     await expect(page).toHaveURL('/cta');
+> 59 |     await expect(page).toHaveURL('/cta');
+     |                        ^ Error: expect(page).toHaveURL(expected) failed
   60 |     
   61 |     // Fill the form
   62 |     await page.fill('#field-name', 'Test User');

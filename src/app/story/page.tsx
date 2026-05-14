@@ -4,26 +4,70 @@ import { motion } from "framer-motion";
 import { GlassCard } from "@/components/GlassCard";
 import Link from "next/link";
 import { ArrowRight, Quote, Zap } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useTexture } from "@react-three/drei";
+import * as THREE from "three";
+
+function FounderMesh() {
+  const texture = useTexture("/founder.png");
+  const meshRef = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.1;
+      meshRef.current.rotation.y = THREE.MathUtils.lerp(
+        meshRef.current.rotation.y,
+        (state.pointer.x * Math.PI) / 8,
+        0.1
+      );
+      meshRef.current.rotation.x = THREE.MathUtils.lerp(
+        meshRef.current.rotation.x,
+        (-state.pointer.y * Math.PI) / 8,
+        0.1
+      );
+    }
+  });
+
+  return (
+    <mesh ref={meshRef}>
+      <planeGeometry args={[3, 4]} />
+      <meshStandardMaterial map={texture} roughness={0.4} metalness={0.1} side={THREE.DoubleSide} />
+    </mesh>
+  );
+}
 
 const storyBeats = [
   {
-    label: "Viscosity Status",
-    value: "Optimized for Max Chill",
+    label: "Smoothness",
+    value: "Super Chill",
     accent: "tertiary",
   },
   {
-    label: "Carbonation Cycle",
-    value: "Perpetual Pulse Pattern",
+    label: "Bubbles",
+    value: "Never-ending Fizz",
     accent: "primary",
   },
   {
-    label: "Color Spectrum",
-    value: "Deep Nebula Blue #001B3D",
+    label: "Color",
+    value: "Deep Space Blue",
     accent: "secondary-container",
   },
 ];
 
+import { useFlavorStore } from "@/store/useFlavorStore";
+import { useRouter } from "next/navigation";
+
 export default function StoryPage() {
+  const { startSync } = useFlavorStore();
+  const router = useRouter();
+
+  const handleSync = () => {
+    startSync(() => {
+      router.push("/viewer");
+    });
+  };
   return (
     <main className="relative pt-20 overflow-x-hidden">
       {/* Hero Brand Story */}
@@ -42,17 +86,14 @@ export default function StoryPage() {
           className="relative z-10 max-w-4xl"
         >
           <span className="font-technical-label text-technical-label text-tertiary uppercase tracking-[0.3em] mb-6 block">
-            Origin Protocol
+            How It Began
           </span>
           <h1 className="font-display-hero text-display-hero leading-tight text-white mb-8 md:text-[120px] text-[64px]">
-            Crafted Beyond <br />
-            <span className="text-tertiary">This Dimension</span>
+            Made for <br />
+            <span className="text-tertiary">Every World</span>
           </h1>
           <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto leading-relaxed opacity-80">
-            The Pepsi Multiverse is not just a drink; it is a sensory expedition.
-            We&apos;ve harnessed the elemental energy of neon-drenched metropolises
-            and the chill of deep space to engineer a hydration experience that
-            defies classical physics.
+            The Pepsi Universe isn't just a drink; it's an adventure. We captured the glow of neon cities and the coolest ice from deep space to create the best tasting drink ever made.
           </p>
         </motion.div>
         <motion.div
@@ -80,12 +121,10 @@ export default function StoryPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none" />
             <div className="absolute bottom-12 left-12 max-w-lg">
               <h2 className="font-headline-lg text-headline-lg text-white mb-4">
-                Atomic Precision
+                Perfect Bubbles
               </h2>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                Every bubble is precision-engineered using molecular synthesis.
-                Our flavor profiles are calibrated to resonate with your neural
-                receptors at the exact moment of impact.
+                Every single bubble is made to be perfect. The flavors are mixed just right so every sip tastes amazing the second it hits your tongue.
               </p>
             </div>
           </div>
@@ -97,10 +136,10 @@ export default function StoryPage() {
             </div>
             <div>
               <span className="font-technical-label text-technical-label text-tertiary mb-2 block">
-                DATA STREAM // 001
+                FUN FACTS // 001
               </span>
               <h3 className="font-headline-lg text-[40px] text-white leading-none mb-6">
-                The Liquid <br /> Architecture
+                What's <br /> Inside
               </h3>
               <div className="space-y-6">
                 {storyBeats.map((beat) => (
@@ -135,54 +174,49 @@ export default function StoryPage() {
             </Link>
           </div>
 
-          {/* Wide Story Arc */}
-          <div className="col-span-12 lg:col-span-5 glass-panel rim-light rounded-xl p-12 border border-white/5 flex flex-col justify-center">
+          {/* History Arc */}
+          <div className="col-span-12 lg:col-span-5 glass-panel rim-light rounded-xl p-12 border border-white/5 flex flex-col justify-center relative overflow-hidden">
             <h2 className="font-headline-lg text-headline-lg text-white mb-6">
-              A Legacy Refracted
+              Where It All Started
             </h2>
             <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-8">
-              We took the heritage of the globe—the red, the white, and the
-              blue—and sent it through a prism. What emerged on the other side was
-              a multiverse of taste that exists simultaneously across every
-              possible reality.
+              Long before we traveled across universes, Pepsi was born in 1893 right here on Earth! Created by Caleb Bradham in New Bern, North Carolina, it was first called "Brad's Drink". By 1898, it was officially named Pepsi-Cola.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <span className="px-4 py-2 border border-primary/30 rounded-full font-technical-label text-primary">
-                Reality A-101
-              </span>
-              <span className="px-4 py-2 border border-tertiary/30 bg-tertiary/10 rounded-full font-technical-label text-tertiary">
-                The Glitch Variant
-              </span>
-              <span className="px-4 py-2 border border-white/30 rounded-full font-technical-label text-white">
-                Classic Core
-              </span>
+            <div className="flex flex-wrap gap-4 relative z-10">
+              {/* Buttons removed as requested */}
             </div>
           </div>
 
-          {/* Interactive Node Visual */}
-          <div className="col-span-12 lg:col-span-7 glass-panel rim-light rounded-xl relative overflow-hidden min-h-[400px] flex items-center justify-center">
-            <div className="absolute inset-0 z-0">
-              <img
-                className="w-full h-full object-cover opacity-40 grayscale"
-                alt="Circuit board neon"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnHu_ZpSOp-Q9xumrUfV2MaNd0jm_IaV5k3P1Zqessf095TBUZraLKHotTlVvODxk6AkcCkENTmymCYCZFbWvn64crj0L0zfeUPl5NTSnFK2JGz4it5F4m_oJzt42KLJEcRoUNkzzM2vJxUdD2HcuZdgAVoL1WGuF74lmOt2veNArre-RGx0HIlDSCGb-EEMjsirXJ8kDcQkoNAP_DYVrdCKGHI-i44j5xyncbcWQEKH3Gx7cOMP-rsG-BQHst85YFY8VFTn9-qaTh"
-              />
-            </div>
-            <div className="relative z-10 flex items-center justify-center">
+          {/* Caleb Bradham Visual */}
+          <div className="col-span-12 lg:col-span-7 relative flex items-center justify-center p-8 group perspective-[1000px]">
+            <div className="glass-panel rim-light rounded-xl overflow-hidden w-full max-w-md aspect-[3/4] border border-white/10 relative">
+              <div className="absolute inset-0 z-0 cursor-move">
+                <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+                  <ambientLight intensity={1.5} />
+                  <directionalLight position={[2, 5, 2]} intensity={2} />
+                  <Suspense fallback={null}>
+                    <FounderMesh />
+                  </Suspense>
+                </Canvas>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10 pointer-events-none" />
+              <div className="absolute bottom-8 left-8 right-8 z-20 pointer-events-none">
+                <span className="font-technical-label text-tertiary uppercase tracking-widest text-[10px] mb-2 block">
+                  Founder // 1893
+                </span>
+                <h3 className="font-headline-lg text-white text-3xl">Caleb Bradham</h3>
+              </div>
+              {/* Subtle 3D floating elements */}
               <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="w-24 h-24 rounded-full bg-tertiary/20 flex items-center justify-center border border-tertiary/50"
-              >
-                <div className="w-12 h-12 rounded-full bg-tertiary shadow-[0_0_30px_rgba(0,217,255,0.8)]" />
-              </motion.div>
-              <div className="absolute w-40 h-40 border border-tertiary/20 rounded-full" />
-              <div className="absolute w-64 h-64 border border-tertiary/10 rounded-full" />
-            </div>
-            <div className="absolute top-8 left-8">
-              <span className="font-technical-label text-tertiary uppercase">
-                Active Node: FLAVOR_CORE_04
-              </span>
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-8 right-8 w-16 h-16 border border-tertiary/30 rounded-full pointer-events-none"
+              />
+              <motion.div
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-12 right-12 w-8 h-8 border border-tertiary/60 rounded-full pointer-events-none"
+              />
             </div>
           </div>
         </div>
@@ -211,12 +245,10 @@ export default function StoryPage() {
       <section className="py-32 px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-max-width mx-auto">
         <div className="space-y-8">
           <h2 className="font-headline-lg text-headline-lg text-white">
-            The Aesthetic of <br /> Liquid Luxury
+            The Coolest <br /> Drinks Ever
           </h2>
           <p className="font-body-md text-body-md text-on-surface-variant max-w-lg">
-            We utilize vacuum-sealed glass vessels designed to maintain a
-            consistent temperature of -2°C, ensuring the carbonation structure
-            remains intact during inter-dimensional transport.
+            We use special super-cold bottles to keep everything at exactly -2°C, making sure every drop stays perfectly fizzy and refreshing when it travels to you!
           </p>
           <div className="grid grid-cols-2 gap-4">
             <GlassCard className="p-6 rounded-xl!">
@@ -224,7 +256,7 @@ export default function StoryPage() {
                 99.9%
               </div>
               <div className="font-technical-label text-outline uppercase text-[10px]">
-                Purity Index
+                Awesome Taste
               </div>
             </GlassCard>
             <GlassCard className="p-6 rounded-xl!">
@@ -232,15 +264,21 @@ export default function StoryPage() {
                 0.02s
               </div>
               <div className="font-technical-label text-outline uppercase text-[10px]">
-                Flavor Activation
+                Fast Flavor
               </div>
             </GlassCard>
           </div>
-          <Link href="/cta">
-            <button className="liquid-metallic-gradient text-on-primary font-nav-item text-nav-item px-10 py-4 rounded-full hover:scale-105 transition-all neon-glow flex items-center gap-2">
-              Initiate Sync <ArrowRight size={18} />
+          <div className="flex flex-col items-start gap-2">
+            <button 
+              onClick={handleSync}
+              className="liquid-metallic-gradient text-on-primary font-nav-item text-nav-item px-10 py-4 rounded-full hover:scale-105 transition-all neon-glow flex items-center gap-2 group"
+            >
+              Initiate Sync <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
-          </Link>
+            <span className="font-technical-label text-[10px] text-tertiary/60 uppercase tracking-widest pl-4">
+              Starts immersive 3D experience
+            </span>
+          </div>
         </div>
         <div className="relative group">
           <div className="absolute -inset-4 bg-tertiary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
