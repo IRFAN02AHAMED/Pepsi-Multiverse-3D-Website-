@@ -25,7 +25,7 @@ const flavorStats: Record<string, { co2: number; chill: number; energy: number; 
   max: { co2: 100, chill: 65, energy: 100, dimension: "010" },
 };
 
-function StatBar({ label, value, icon: Icon }: { label: string; value: number; icon: React.ElementType }) {
+function StatBar({ label, value, icon: Icon }: { label: string; value: number; icon: React.ElementType<{ size?: number }> }) {
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-center">
