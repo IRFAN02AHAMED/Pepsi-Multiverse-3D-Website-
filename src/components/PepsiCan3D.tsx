@@ -99,6 +99,16 @@ export function PepsiCan3D({ flavorId, highIllumination, explodedProgress = 0, s
     tabRotationX.current = THREE.MathUtils.lerp(tabRotationX.current, targetTabRotation, 0.1);
   });
 
+  // Realistic metal material properties
+  const metalProps = {
+    color: "#e2e8f0",
+    metalness: 0.9,
+    roughness: 0.35,
+    clearcoat: 0.3,
+    clearcoatRoughness: 0.2,
+    envMapIntensity: highIllumination ? 4.0 : 3.0,
+  };
+
   return (
     <group ref={canRef} dispose={null}>
       {/* 1. Main Label Body */}
@@ -106,11 +116,11 @@ export function PepsiCan3D({ flavorId, highIllumination, explodedProgress = 0, s
         <cylinderGeometry args={[1, 1, 2.4, 64]} />
         <meshPhysicalMaterial
           map={texture}
-          metalness={0.7}
-          roughness={0.2}
-          clearcoat={0.6}
-          clearcoatRoughness={0.1}
-          envMapIntensity={highIllumination ? 4 : 2.5}
+          metalness={0.6}
+          roughness={0.25}
+          clearcoat={0.8}
+          clearcoatRoughness={0.15}
+          envMapIntensity={highIllumination ? 3.5 : 2.5}
         />
       </mesh>
 
@@ -119,10 +129,10 @@ export function PepsiCan3D({ flavorId, highIllumination, explodedProgress = 0, s
         <cylinderGeometry args={[1, 1, 2.4, 64]} />
         <meshPhysicalMaterial
           transparent
-          opacity={0.25}
-          transmission={0.8}
+          opacity={0.3}
+          transmission={0.9}
           thickness={0.2}
-          roughness={0.25}
+          roughness={0.3}
           ior={1.5}
           clearcoat={1}
           clearcoatRoughness={0.1}
@@ -130,50 +140,33 @@ export function PepsiCan3D({ flavorId, highIllumination, explodedProgress = 0, s
       </mesh>
 
       {/* 2. Top Shoulder (Tapered) */}
-      <mesh position={[0, 1.35 + (currentExploded * 0.5), 0]}>
+      <mesh position={[0, 1.35 + (currentExploded * 0.5), 0]} castShadow receiveShadow>
         <cylinderGeometry args={[0.85, 1, 0.3, 64]} />
-        <meshPhysicalMaterial
-          color="#d1d5db"
-          metalness={1}
-          roughness={0.1}
-          envMapIntensity={highIllumination ? 3 : 2}
-        />
+        <meshPhysicalMaterial {...metalProps} />
       </mesh>
 
       {/* 3. Top Rim & Cap */}
-      <mesh position={[0, 1.55 + (currentExploded * 1.2), 0]}>
+      <mesh position={[0, 1.55 + (currentExploded * 1.2), 0]} castShadow receiveShadow>
         <cylinderGeometry args={[0.85, 0.85, 0.1, 64]} />
-        <meshPhysicalMaterial
-          color="#9ca3af"
-          metalness={1}
-          roughness={0.2}
-        />
+        <meshPhysicalMaterial {...metalProps} roughness={0.25} />
       </mesh>
 
       {/* 4. Bottom Shoulder (Tapered) */}
-      <mesh position={[0, -1.35 - (currentExploded * 0.5), 0]}>
+      <mesh position={[0, -1.35 - (currentExploded * 0.5), 0]} castShadow receiveShadow>
         <cylinderGeometry args={[1, 0.85, 0.3, 64]} />
-        <meshPhysicalMaterial
-          color="#d1d5db"
-          metalness={1}
-          roughness={0.1}
-        />
+        <meshPhysicalMaterial {...metalProps} />
       </mesh>
 
       {/* 5. Bottom Rim */}
-      <mesh position={[0, -1.55 - (currentExploded * 1.2), 0]}>
+      <mesh position={[0, -1.55 - (currentExploded * 1.2), 0]} castShadow receiveShadow>
         <cylinderGeometry args={[0.85, 0.85, 0.1, 64]} />
-        <meshPhysicalMaterial
-          color="#9ca3af"
-          metalness={1}
-          roughness={0.2}
-        />
+        <meshPhysicalMaterial {...metalProps} roughness={0.25} />
       </mesh>
 
       {/* 6. Pull Tab */}
-      <mesh position={[0.2, 1.62 + (currentExploded * 1.2), 0]} rotation={[tabRotationX.current, 0.2, 0]}>
+      <mesh position={[0.2, 1.62 + (currentExploded * 1.2), 0]} rotation={[tabRotationX.current, 0.2, 0]} castShadow receiveShadow>
         <boxGeometry args={[0.4, 0.02, 0.2]} />
-        <meshPhysicalMaterial color="#9ca3af" metalness={1} roughness={0.1} />
+        <meshPhysicalMaterial {...metalProps} roughness={0.2} />
       </mesh>
 
       {/* Fizz Particle System */}
@@ -225,6 +218,7 @@ function AmbientParticles({ flavorId }: { flavorId: string }) {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
+          args={[positions, 3]}
           count={count}
           array={positions}
           itemSize={3}
@@ -248,10 +242,12 @@ export function PepsiScene({
 }) {
   return (
     <Suspense fallback={null}>
-      <PerspectiveCamera makeDefault position={[0, 0, 7]} fov={35} />
-      <ambientLight intensity={highIllumination ? 1.2 : 0.8} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={highIllumination ? 2.5 : 1.5} castShadow />
-      <pointLight position={[-10, -5, -10]} intensity={highIllumination ? 1.2 : 0.8} />
+      {/* Increased camera distance and fov slightly to ensure the full can is visible */}
+      <PerspectiveCamera makeDefault position={[0, 0, 8.5]} fov={38} />
+      <ambientLight intensity={highIllumination ? 1.5 : 1.0} />
+      <spotLight position={[10, 15, 10]} angle={0.2} penumbra={1} intensity={highIllumination ? 3.0 : 2.0} castShadow />
+      <spotLight position={[-10, 5, 10]} angle={0.2} penumbra={1} intensity={highIllumination ? 1.5 : 1.0} />
+      <pointLight position={[-10, -5, -10]} intensity={highIllumination ? 1.5 : 1.0} />
       
       <AmbientParticles flavorId={flavorId} />
 
@@ -275,3 +271,4 @@ export function PepsiScene({
     </Suspense>
   );
 }
+

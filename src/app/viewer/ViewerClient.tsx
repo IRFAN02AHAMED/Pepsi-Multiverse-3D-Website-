@@ -13,16 +13,16 @@ import { OrbitControls } from "@react-three/drei";
 import { PepsiScene } from "@/components/PepsiCan3D";
 
 const flavorStats: Record<string, { co2: number; chill: number; energy: number; dimension: string }> = {
-  original:            { co2: 100, chill: 85,  energy: 72,  dimension: "001" },
-  "zero-sugar":        { co2: 98,  chill: 100, energy: 90,  dimension: "002" },
-  "wild-cherry":       { co2: 88,  chill: 70,  energy: 95,  dimension: "003" },
-  "electric-limited":  { co2: 100, chill: 60,  energy: 100, dimension: "004" },
-  lime:                { co2: 92,  chill: 88,  energy: 65,  dimension: "005" },
-  mango:               { co2: 85,  chill: 76,  energy: 60,  dimension: "006" },
-  blue:                { co2: 95,  chill: 94,  energy: 78,  dimension: "007" },
-  nitro:               { co2: 80,  chill: 100, energy: 100, dimension: "008" },
-  vanilla:             { co2: 82,  chill: 80,  energy: 55,  dimension: "009" },
-  max:                 { co2: 100, chill: 65,  energy: 100, dimension: "010" },
+  original: { co2: 100, chill: 85, energy: 72, dimension: "001" },
+  "zero-sugar": { co2: 98, chill: 100, energy: 90, dimension: "002" },
+  "wild-cherry": { co2: 88, chill: 70, energy: 95, dimension: "003" },
+  "electric-limited": { co2: 100, chill: 60, energy: 100, dimension: "004" },
+  lime: { co2: 92, chill: 88, energy: 65, dimension: "005" },
+  mango: { co2: 85, chill: 76, energy: 60, dimension: "006" },
+  blue: { co2: 95, chill: 94, energy: 78, dimension: "007" },
+  nitro: { co2: 80, chill: 100, energy: 100, dimension: "008" },
+  vanilla: { co2: 82, chill: 80, energy: 55, dimension: "009" },
+  max: { co2: 100, chill: 65, energy: 100, dimension: "010" },
 };
 
 function StatBar({ label, value, icon: Icon }: { label: string; value: number; icon: React.ElementType }) {
@@ -110,37 +110,37 @@ export default function ViewerClient() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Flavor Selector Sidebar */}
           <div className="lg:col-span-3 relative h-[300px] lg:h-[600px] overflow-hidden group">
-            <motion.div 
+            <motion.div
               drag="y"
               dragConstraints={{ top: -((flavors.length - 5) * 80), bottom: 0 }}
               className="flex lg:flex-col gap-3 pb-2 lg:pb-0 cursor-grab active:cursor-grabbing"
             >
-            {flavors.map((flavor) => (
-              <button
-                key={flavor.id}
-                id={`flavor-btn-${flavor.id}`}
-                onClick={() => {
-                  setFlavor(flavor.id);
-                  router.replace(`/viewer?flavor=${flavor.id}`, { scroll: false });
-                }}
-                className={cn(
-                  "flex-shrink-0 glass-panel rim-light rounded-xl p-3 flex items-center gap-3 transition-all duration-300 text-left border",
-                  activeFlavor === flavor.id
-                    ? "border-tertiary neon-glow"
-                    : "border-white/5 hover:border-white/20"
-                )}
-              >
-                <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
-                  <img src={flavor.image} alt={flavor.name} className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <p className="font-nav-item text-nav-item text-on-surface text-xs leading-tight">{flavor.name}</p>
-                  <p className="font-technical-label text-technical-label text-outline">DIM-{flavorStats[flavor.id]?.dimension}</p>
-                </div>
-              </button>
-            ))}
+              {flavors.map((flavor) => (
+                <button
+                  key={flavor.id}
+                  id={`flavor-btn-${flavor.id}`}
+                  onClick={() => {
+                    setFlavor(flavor.id);
+                    router.replace(`/viewer?flavor=${flavor.id}`, { scroll: false });
+                  }}
+                  className={cn(
+                    "flex-shrink-0 glass-panel rim-light rounded-xl p-3 flex items-center gap-3 transition-all duration-300 text-left border",
+                    activeFlavor === flavor.id
+                      ? "border-tertiary neon-glow"
+                      : "border-white/5 hover:border-white/20"
+                  )}
+                >
+                  <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+                    <img src={flavor.image} alt={flavor.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <p className="font-nav-item text-nav-item text-on-surface text-xs leading-tight">{flavor.name}</p>
+                    <p className="font-technical-label text-technical-label text-outline">DIM-{flavorStats[flavor.id]?.dimension}</p>
+                  </div>
+                </button>
+              ))}
             </motion.div>
-            
+
             {/* Ambient indicator for scrollability */}
             <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-background to-transparent pointer-events-none opacity-60" />
             <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-background to-transparent pointer-events-none opacity-60" />
@@ -168,15 +168,15 @@ export default function ViewerClient() {
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-64 h-64 rounded-full border border-tertiary/20 animate-ping" />
               </div>
-              
+
               <Canvas shadows className="w-full h-full">
-                <PepsiScene 
-                  flavorId={current.id} 
+                <PepsiScene
+                  flavorId={current.id}
                   explodedProgress={exploded ? 1 : 0}
                   showFizz={showFizz}
                 />
-                <OrbitControls 
-                  enableDamping 
+                <OrbitControls
+                  enableDamping
                   dampingFactor={0.05}
                   rotateSpeed={0.8}
                   minDistance={5}
@@ -214,7 +214,7 @@ export default function ViewerClient() {
                 )}
               >
                 <Box size={16} />
-                {exploded ? "HIDE DETAILS" : "SHOW DETAILS"}
+                {exploded ? "DEACTIVATE ANALYSIS" : "TECHNICAL ANALYSIS"}
               </button>
 
               <button
@@ -239,7 +239,7 @@ export default function ViewerClient() {
               >
                 <h2 className="font-headline-lg text-headline-lg">{current.name}</h2>
                 <p className="font-technical-label text-technical-label text-outline mt-1">
-                  TASTE PROFILE: {stats.dimension}
+                  MOLECULAR PROFILE: {stats.dimension}
                 </p>
               </motion.div>
             </AnimatePresence>
@@ -249,11 +249,11 @@ export default function ViewerClient() {
           <div className="lg:col-span-3 flex flex-col gap-6">
             <GlassCard className="p-6 rounded-2xl!">
               <div className="font-technical-label text-technical-label text-tertiary uppercase mb-4 tracking-widest">
-                TASTE STATS
+                FLAVOR ANALYSIS
               </div>
               <AnimatePresence mode="wait">
                 <motion.div key={current.id + "_stats"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-5">
-                  <StatBar label="Fizziness" value={stats.co2} icon={Droplets} />
+                  <StatBar label="CO₂ Saturation" value={stats.co2} icon={Droplets} />
                   <StatBar label="Chill Factor" value={stats.chill} icon={Thermometer} />
                   <StatBar label="Energy Level" value={stats.energy} icon={Zap} />
                 </motion.div>
@@ -262,11 +262,11 @@ export default function ViewerClient() {
 
             <GlassCard className="p-6 rounded-2xl!">
               <div className="font-technical-label text-technical-label text-tertiary uppercase mb-4 tracking-widest">
-                WORLD LIVE STATS
+                DIMENSION TELEMETRY
               </div>
               <div className="space-y-3">
                 {[
-                  { label: "WORLD ID", value: `DIM-${stats.dimension}`, cls: "text-on-surface" },
+                  { label: "DIMENSION ID", value: `DIM-${stats.dimension}`, cls: "text-on-surface" },
                   { label: "STATUS", value: "ACTIVE", cls: "text-tertiary" },
                   { label: "CATEGORY", value: current.category, cls: "text-on-surface" },
                   { label: "SYNC", value: "99.98%", cls: "text-green-400" },
